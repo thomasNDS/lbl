@@ -1,0 +1,45 @@
+               <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  
+<h1>DEMO v0.3</h1>
+         <style>
+  .tooltip {
+    opacity : 1;
+  }
+</style>      
+               <div class="bloc-map" style="width:400px; height:600px; margin:auto;">
+                     <div class="lg-map-wrapper" id="europeanUnion-map"></div>
+                 </div> <!-- End Map html -->
+                 
+<script src="https://thomas-nunes.tk/expose/map/raph-min.js"></script>
+                  <script src="https://thomas-nunes.tk/expose/map/europeanUnion/lg-map/lg-map.min.js"></script>
+          
+      
+    <script type="text/javascript">
+        var selected = "Luxembourg"
+        var urlMap = "https://thomas-nunes.tk/expose/map/europeanUnion/"
+    </script> 
+    
+       <script>
+       
+           $(function() {
+               // ******************
+               //   MAP config JS
+               // ******************
+              $('#europeanUnion-map').LGMap({
+                map: 'europeanUnion',
+            pinSize: 12,
+            useText : true,
+            "displayAbbreviationOnDisabledStates": true,
+            useTextAtBottom : true,
+            textAreaWidth : 0,
+            textAreaHeight : 0,
+              });
+      
+          });
+       </script>
+       
+       <style>
+  .tooltip {
+    opacity : 1;
+  }
+</style>

@@ -1,0 +1,68 @@
+<template>
+  <div id="lbl-footer" class="footer">
+
+    <div class="container text-center">
+      <a v-bind:href="'#/Disclaimer?lang=' + storage.lang" class="footer-link">
+        <i class="fa fa-bullhorn icon-start" aria-hidden="true"></i>
+        <span class="text-muted">
+         {{trans[26]}} <!-- Disclaimer -->
+        </span>
+      </a>
+      <a v-bind:href="'#/Legal?lang=' + storage.lang" class="footer-link">
+        <i class="fa fa-gavel icon-start" aria-hidden="true"></i>
+        <span class="text-muted">
+          {{trans[25]}} <!-- About -->
+        </span>
+      </a>
+      <div>
+        <a href="https://twitter.com/share?url=https%3A//lobbyland.eu&related=Lobbyland%2CEU
+                 &hashtags=lobbyland%2CEU
+                 &text=Lobbyland, the EU lobby registry." class="footer-social-link">
+          <i class="fa fa-twitter" aria-hidden="true" target="_blank"></i>
+        </a>
+
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//lobbyland.eu" class="footer-social-link">
+          <i class="fa fa-facebook" aria-hidden="true" target="_blank"></i>
+        </a>
+
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//lobbyland.eu&title=lobbyland&summary=Lobbyland, the EU lobby registry.&source=" class="footer-social-link">
+          <i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i>
+        </a>
+      </div>
+
+    </div>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+  </div>
+</template>
+
+<script>
+import bus from '../components/EventBus.js'
+
+export default {
+  name: 'lbl-footer',
+  props: ['storage'],
+  data() {
+    return {
+      trans: []
+    }
+  },
+  created() {
+     bus.$on('updateLang', section => {
+        this.trans = this.storage.trans
+      });
+  },
+  methods: {
+
+        a: function() {
+            console.log("a")
+        }
+        
+    }
+}
+</script>
+
+<style>
+
+</style>
