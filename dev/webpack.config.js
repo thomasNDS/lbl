@@ -1,6 +1,7 @@
 var path = require('path')
 var webpack = require('webpack')
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 function resolve (dir) {
   return path.join(__dirname, dir)
@@ -32,6 +33,10 @@ module.exports = {
     new CopyWebpackPlugin([
         {from:'src/static', to:'static'} 
     ]), 
+    new HtmlWebpackPlugin ({
+      inject: true,
+      template: '../index.html'
+    })
   ],
   module: {
     rules: [

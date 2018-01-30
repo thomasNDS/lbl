@@ -51,7 +51,8 @@ const store = {}
 store.url = 'https://script.google.com/macros/s/AKfycbxqd3bFwVpmY1hGrq0HNheCGIwiXoVIXBUB7CcDnsQ-_6uKHO8l/exec?nav=u'
 store.cacheUrl = 'https://lobbyland.eu/data/'
 store.lang = "EN"
-
+store.ctxDist = ctxDist
+console.log('ctxDist', ctxDist)
 
 const param = function(route) {
 
@@ -86,3 +87,7 @@ const app = new Vue({
     })
   }
 }).$mount('#app')
+
+window.snapSaveState = () => {
+    document.querySelector('#app').setAttribute('data-server-rendered', 'true')
+};

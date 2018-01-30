@@ -89,16 +89,16 @@
         <div class="row text-center" style="margin-top:2em;">
 
             <div class="col-md-3 home-img-col"><a :href="'#/country/China?lang=' + storage.lang">
-              <img src="/dist/static/china.png" class="countries-img"/></a></div>
+              <img :src="storage.ctxDist + '/static/china.png'" class="countries-img"/></a></div>
 
             <div class="col-md-3 home-img-col"><a :href="'#/country/United states?lang=' + storage.lang">
-              <img src="/dist/static/usa.png" class="countries-img"/></a></div>
+              <img :src="storage.ctxDist + '/static/usa.png'" class="countries-img"/></a></div>
 
             <div class="col-md-3 home-img-col"><a :href="'#/country/Germany?lang=' + storage.lang">
-              <img src="/dist/static/germany.png" class="countries-img"/></a></div>
+              <img :src="storage.ctxDist + '/static/germany.png'" class="countries-img"/></a></div>
 
             <div class="col-md-3 home-img-col"><a :href="'#/country/Switzerland?lang=' + storage.lang">
-              <img src="/dist/static/suisse.png" class="countries-img"/></a></div>
+              <img :src="storage.ctxDist + '/static/suisse.png'" class="countries-img"/></a></div>
 
         </div>
         <div class="row text-center" style="margin-top:2em;">

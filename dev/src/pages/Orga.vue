@@ -205,7 +205,7 @@
 
             <span v-for="interest in interestsAsList" v-bind:key="interest" >
               <img :id="'ic-' + interest.slice(0,4) + interest.slice(-2)"
-              :src="'/dist/static/' + interest.slice(0,4) + interest.slice(-2) +'.svg'" class="icon-interest"/>
+              :src="storage.ctxDist + '/static/' + interest.slice(0,4) + interest.slice(-2) +'.svg'" class="icon-interest"/>
               
               <b-tooltip :target="'ic-' + interest.slice(0,4) + interest.slice(-2)">{{interest}}</b-tooltip>
             </span>

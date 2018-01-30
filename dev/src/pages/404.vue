@@ -11,7 +11,7 @@
 
 <h1>Oops ... </h1>
 <br/>
-    <img src="/dist/static/broken.png" style="width: 100px;"/>
+    <img :src="storage.ctxDist + '/static/broken.png'" style="width: 100px;"/>
     <br/><br/>
     <h3>{{trans[119]}}. <!-- This page doesn't exist anymore --> </h3>
 
