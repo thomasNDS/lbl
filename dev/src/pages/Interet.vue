@@ -30,9 +30,30 @@
       <div class="container">
               
         <h3 id="Presentation" class="sub-t1">
-              {{trans[11]}} <!-- Presentation -->
+              Statistiques <!-- Presentation -->
         </h3>
-        <div class="row">
+        <div class="">
+        
+        <p>
+         {{Math.round(interet.perNbLobby * 1000)/10}} % sont intéréssé par le sujet.<br/>
+         Soit {{interet.nbLobby}} lobbys et  {{Math.round(interet.nbLobbyist)}} personnes<br/> 
+        </p>
+        <p class="lbl-badge"><span class="eme-parse">{{interet.rankNbLobby}}</span>/ 27</p>  
+
+      <p>
+         {{Math.round(interet.cash) | currency}} € de dépenses sur ce sujet.<br/>
+         Soit {{(interet.cash /interet.nbLobby).toFixed(0) | currency }} € en moyenne par organisation
+         
+         et {{(interet.cash /511800000).toFixed(2) }} € par <span id="citizen" class="lbl-has-tooltip">citoyen européen</span>.
+         <b-tooltip target="citizen" delay="500" placement="bottom" triggers="hover click"> 
+           Sur la base de 511.8 millions de citoyens. 
+            <b-link class="text-secondary" href="http://ec.europa.eu/eurostat/tgm/table.do?tab=table&language=en&pcode=tps00001&tableSelection=1&footnotes=yes&labeling=labels&plugin=1">
+            Données Eurostat 2017
+            </b-link>
+            </b-tooltip>
+          <br/>
+        </p>
+        <p class="lbl-badge"><span class="eme-parse">{{interet.rankCash}}</span>/ 27</p>  
 
         </div> <!-- End row -->
       </div><!-- End container -->
@@ -41,16 +62,16 @@
         <div class="container">
         
       <!-- ****************** -->
-      <!--    Informations    -->
+      <!--    Countries    -->
       <!-- ****************** -->
-          <h3 id="Informations" class="sub-t1">{{trans[23]}} <!-- Informations --></h3>
+          <h3 id="Countries" class="sub-t1">Countries</h3>
           
-            
-          <p class="lbl-badge"><span class="eme-parse">{{interet.rankNbLobby }}</span>/ 27</p>  
-         
+            {{interet.topCountries}}
+
         </div><!-- End container -->
       </div>
-      
+               {{interet.topLobbyCash}}
+         {{interet.topLobbyPeople}}
     </div> <!-- End block-header -->
   </div>
 
@@ -171,6 +192,11 @@ export default {
 .icon-global {
   width: 60px;
   margin-right:20px;
+  vertical-align: sub;
+}
+
+.lbl-has-tooltip {
+  text-decoration: underline grey;
 }
 
 </style>

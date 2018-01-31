@@ -173,7 +173,8 @@
           {{trans[11]}} <!--  Presentation -->
         </h3>
 
-        <div class="text-justify">
+        <!--  GOALS -->
+        <div class="text-justify row">
           <i class="fa fa-tag icon-start" aria-hidden="true"></i>
           <span class="info">
             {{trans[12]}} <!--  Goals --> :</span>
@@ -196,7 +197,8 @@
           </div>
         </div>
 
-        <div v-if="orga.interests != ''">
+        <!--  FIELDS of interest -->
+        <div v-if="orga.interests != ''" class="row">
           <i class="fa fa-exchange icon-start" aria-hidden="true"></i>
           <span class="info">
             {{trans[35]}} <!--  Fields of interest --> :</span>
