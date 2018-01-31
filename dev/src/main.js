@@ -88,6 +88,3 @@ const app = new Vue({
   }
 }).$mount('#app')
 
-window.snapSaveState = () => {
-    document.querySelector('#app').setAttribute('data-server-rendered', 'true')
-};

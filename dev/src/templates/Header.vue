@@ -114,10 +114,11 @@ export default {
     /** */
     loadLang: function() {
       this.$http
-        .get(this.storage.url + "&method=getLang&lang=" + this.storage.lang)
+        .get(this.storage.cacheUrl + "lang/" + this.storage.lang.toLowerCase() + ".json")
         .then(
           response => {
-            this.storage.trans = response.body.data;
+            console.log(response)
+            this.storage.trans = response.body.langs;
             this.trans = this.storage.trans;
             this.lang = this.storage.lang;
 
