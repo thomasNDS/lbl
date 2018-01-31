@@ -139,26 +139,26 @@ export default {
       this.trans = this.storage.trans
     });
   },
+  computed: {
+       getDescription: function() { return "Lobbyland is a european lobbyist register."},
+  },
   head: {
     meta: [
-      { name: 'application-name', content: 'Name of my application' },
-      { name: 'description', content: 'A description of the page', id: 'desc' }, // id to replace intead of create element
-      // ...
+      { name: "Lobbyland", content: "Lobbyland" },
+      { name: "description", content: this.getDescription, id: "desc" },
       // Twitter
-      { name: 'twitter:title', content: 'Content Title' },
+      { name: "twitter:title", content: this.getDescription },
       // with shorthand
-      { n: 'twitter:description', c: 'Content description less than 200 characters' },
-      // ...
+      {
+        n: "twitter:description",
+        c: this.getDescription
+      },
       // Google+ / Schema.org
-      { itemprop: 'name', content: 'Content Title' },
-      { itemprop: 'description', content: 'Content Title' },
-      // ...
+      { itemprop: "name", content: "Lobbyland" },
+      { itemprop: "description", content: this.getDescription },
+
       // Facebook / Open Graph
-      { property: 'fb:app_id', content: '123456789' },
-      { property: 'og:title', content: 'Content Title' },
-      // with shorthand
-      { p: 'og:image', c: 'https://example.com/image.jpg' },
-      // ...
+      { property: "og:title", content: this.getDescription }
     ]
   }
 }

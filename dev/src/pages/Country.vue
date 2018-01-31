@@ -396,7 +396,6 @@ export default {
     meta: [
       { name: "Lobbyland", content: "Lobbyland" },
       { name: "description", content: this.getDescription, id: "desc" },
-
       // Twitter
       { name: "twitter:title", content: this.getDescription },
       // with shorthand
@@ -404,7 +403,6 @@ export default {
         n: "twitter:description",
         c: this.getDescription
       },
-
       // Google+ / Schema.org
       { itemprop: "name", content: "Lobbyland" },
       { itemprop: "description", content: this.getDescription },
