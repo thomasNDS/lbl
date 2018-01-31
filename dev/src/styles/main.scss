@@ -1,0 +1,15 @@
+
+@import 'variables.scss';
+
+/* Bootstrap */
+$theme-colors: (
+  "primary": $primary,
+  "danger": #bd4a44
+);
+
+@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap-vue/dist/bootstrap-vue.css";
+
+@import 'global.scss';
+@import 'badge.scss';
+@import 'show-more.scss';

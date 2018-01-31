@@ -46,6 +46,10 @@ module.exports = {
         exclude: /node_modules/,  
         loaders: ['style-loader', 'css-loader'],
       },
+      { 
+        test: /\.scss$/,
+        loader: 'style-loader!css-loader!sass-loader'
+      },
       {
         test: /\.js$/,
         include: [resolve('src'), resolve('node_modules/vue-particles')],
@@ -70,6 +74,7 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
+            scss: 'style-loader!css-loader!sass-loader'
           }
           // other vue-loader options go here 
         }

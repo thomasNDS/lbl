@@ -54,10 +54,6 @@ export default {
       });
   },
   methods: {
-
-        a: function() {
-            console.log("a")
-        }
         
     }
 }

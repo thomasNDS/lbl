@@ -7,10 +7,13 @@ import Disclaimer from './pages/Disclaimer.vue'
 import Orga from './pages/Orga.vue'
 import Countries from './pages/Countries.vue'
 import Country from './pages/Country.vue'
+import Interet from './pages/Interet.vue'
+import Interets from './pages/Interets.vue'
 import FAQ from './pages/FAQ.vue'
 import p404 from './pages/404.vue'
 
-import styles from './global.css'
+import Styles from './styles/main.scss'
+
 import VueHead from 'vue-head'
 import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
@@ -52,7 +55,6 @@ store.url = 'https://script.google.com/macros/s/AKfycbxqd3bFwVpmY1hGrq0HNheCGIwi
 store.cacheUrl = 'https://lobbyland.eu/data/'
 store.lang = "EN"
 store.ctxDist = ctxDist
-console.log('ctxDist', ctxDist)
 
 const param = function(route) {
 
@@ -67,6 +69,8 @@ const routes = [
   { path: '/orga/:id', component: Orga , props: param},
   { path: '/country/:id', component: Country , props: param},
   { path: '/countries', component: Countries , props: param},
+  { path: '/activity/:id', component: Interet , props: param},
+  { path: '/activities', component: Interets , props: param},
   { path: '/disclaimer', component: Disclaimer , props: param},
   { path: '/legal', component: Legal , props: param},
   { path: '/FAQ', component: FAQ , props: param},

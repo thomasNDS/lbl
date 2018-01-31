@@ -1,0 +1,182 @@
+.tooltip {
+    opacity : 1;
+  }
+
+body.app {
+  background-color:#EFEBE9;
+}
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body.app {
+  /* Margin bottom by footer height */
+  margin-bottom: 130px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 130px;
+  line-height: 50px; /* Vertically center the text there */
+  background-color: $background-color;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+
+body > .container {
+  padding: 60px 15px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+body.app {
+    color: #00223f;
+}
+   
+.breadcrumb {
+   background: none;
+}
+
+#wrap {
+  padding-bottom : 1em;
+}
+
+.info {
+  font-weight : 500;
+}
+.lg-map-wrapper {
+    max-height: 350px;
+}
+
+.bloc-map {
+  width: 480px;
+}
+.icon-start {
+    min-width: 1.25em;
+    opacity: 0.5;
+}
+
+.sub-t1 {
+  margin-bottom : 0.8em;
+}
+
+.part-split {
+    background: white;
+    border: solid 1px #e2e0e0;
+    padding: 1em;
+    padding-top: 2.5em;
+    margin-bottom: 2.5em;
+    margin-top: 1em;
+    border-left: none;
+    border-right: none;
+}
+    
+.footer-link {
+  color: #8a8a8a;
+  padding-right : 1em;
+}
+
+.footer-social-link {
+    color: #de8eb2;
+    padding-right: 1em;
+    font-size: 2em;
+}
+
+/* ------------ Search -------------- */
+
+.flag {
+    height: 15px;
+    border-radius: .15rem;
+}
+
+canvas.particles-js-canvas-el {
+   left: 0;
+    position: absolute;
+    top: 0;
+}
+
+.hide { display: none !important; }
+
+.fa.fa-1-5x {font-size: 1.5em;}
+
+.card.lbl-card-home {
+    min-height: 180px;
+    margin-bottom: 1.5em;
+}
+
+.lbl-page-header {
+  background: #fff; color: #424242; margin-top:1em; margin-bottom:1em;
+}
+
+.lbl-selected {
+  color: $primary;
+}
+
+.lbl-progress {
+  color: #bfbfbf;
+  font-size : 1.3em;
+}
+
+@media only screen and (max-width : 850px) {
+  .lbl-progress {
+    font-size : 1em;
+  }
+}
+@media only screen and (min-width : 850px) {
+  .icon-stat {
+    min-width: 0.9em;
+  }
+}
+@media only screen and (max-width : 500px) {
+  .lbl-progress {
+    font-size : 0.6em;
+  }
+}
+
+.icon-stat {
+  min-width: 0.9em;
+}
+.dark-link {
+  color: #002d54;
+}
+.donut-chart{
+    width: 100%; 
+    height: 800px;
+}
+
+.lbl-flag {
+  border: 1px solid rgb(179, 179, 179);
+}
+
+/* Customs variant */
+.text-pink {
+  color: $primary !important;
+}
+.no-underline {
+  text-decoration: none !important;
+}
+
+.text-def {
+  color: #002d54 !important;
+}
+a.text-def:hover {
+  color: #597c9b !important;
+}
+a.text-pink:hover {
+  color: #F48FB1 !important;
+}

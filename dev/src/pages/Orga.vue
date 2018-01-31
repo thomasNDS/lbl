@@ -1,5 +1,5 @@
 <template>
-  <div id="wrap" style="padding-top: 2em;">
+  <div id="wrap">
 
     <div class="container">
       <ol class="breadcrumb">

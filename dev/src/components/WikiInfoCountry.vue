@@ -35,7 +35,7 @@ export default {
           if (countryId) {
             var url = "https://" + this.lang 
                 + ".wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&pageids=" + countryId
-            console.log(url)
+
             this.$http.jsonp(url).then(
               response => {this.manageResponse(response)},
               response => {

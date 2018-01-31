@@ -1,8 +1,6 @@
 <template>
     <div id="top">
 
-        <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap@next/dist/css/bootstrap.min.css" />
-        <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css" />
         <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
 
         <b-navbar class="navbar navbar-expand-lg navbar-light container" style="padding-top: 1em;">
@@ -117,7 +115,7 @@ export default {
         .get(this.storage.cacheUrl + "lang/" + this.storage.lang.toLowerCase() + ".json")
         .then(
           response => {
-            console.log(response)
+            //console.log(response)
             this.storage.trans = response.body.langs;
             this.trans = this.storage.trans;
             this.lang = this.storage.lang;
@@ -135,7 +133,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+
 .navbar-light .navbar-brand.title {
   font-family: 'Bangers', cursive;
   color: #C51162;
