@@ -138,7 +138,7 @@
           </thead>
           <tbody>
             <tr v-for="city in topCities" :key="city.idx">
-              <th scope="row">{{city.idx}}</th>
+              <th slot-scope="row">{{city.idx}}</th>
               <td>{{city.id | majuscule}}</td>
               <td>{{city.value}}</td>
             </tr>
@@ -155,11 +155,11 @@
       <!-- ******************** -->
       <!-- Organization status  -->
       <!-- ******************** -->
-      <b-button-group class="float-right">
-        <b-button v-on:click="showStatusGraph = true" :variant="!showStatusGraph && 'link' || 'default'">
+      <b-button-group class="float-right lbl-combo-btn">
+        <b-button v-on:click="showStatusGraph = true" :variant="!showStatusGraph && 'dark' || 'default'">
           <i class="fa fa-pie-chart" aria-hidden="true"/>
         </b-button>
-        <b-button v-on:click="showStatusGraph = false" :variant="showStatusGraph && 'link' || 'default'">
+        <b-button v-on:click="showStatusGraph = false" :variant="showStatusGraph && 'dark' || 'default'">
           <i class="fa fa-list-ol" aria-hidden="true"/>
         </b-button>
       </b-button-group>
@@ -182,7 +182,7 @@
           <tbody>      
             
             <tr v-for="status in orgaStatus" :key="status.idx">
-              <th scope="row">{{status.idx}}</th>
+              <th slot-scope="row">{{status.idx}}</th>
               <td>{{status.t}} </td>
               <td>{{status.value}}</td>
             </tr>      
@@ -200,11 +200,11 @@
       <!--    TOP by budget   -->
       <!-- ****************** -->
         
-      <b-button-group class="float-right">
-        <b-button v-on:click="showTopBudget = true" :variant="!showTopBudget && 'link' || 'default'">
+      <b-button-group class="float-right lbl-combo-btn">
+        <b-button v-on:click="showTopBudget = true" :variant="!showTopBudget && 'dark' || 'default'">
           <i class="fa fa-eur" aria-hidden="true"/>
         </b-button>
-        <b-button v-on:click="showTopBudget = false" :variant="showTopBudget && 'link' || 'default'">
+        <b-button v-on:click="showTopBudget = false" :variant="showTopBudget && 'dark' || 'default'">
           <i class="fa fa-users" aria-hidden="true"/>
         </b-button>
       </b-button-group>
@@ -223,8 +223,8 @@
             <tbody>
             
             <tr v-for="b in topBudget" :key="b.idx">
-              <th scope="row">{{b.idx}}</th>
-              <td><a class="dark-link" :href="'/#/orga/' + b.id">{{b.name}}</a></td>
+              <th slot-scope="row">{{b.idx}}</th>
+              <td><a class="dark-link" :href="'/#/orga/' + b.id + '?lang=' + storage.lang">{{b.name}}</a></td>
               <td><span class="currency-parse">{{Math.round(b.value) | currency}}</span> €</td>
             </tr>
               
@@ -251,8 +251,8 @@
             <tbody>
             
             <tr v-for="p in topPeople" :key="p.idx">
-               <th scope="row">{{p.idx}}</th>
-              <td><a class="dark-link" :href="'/#/orga/' + p.id">{{p.name}}</a></td>
+               <th slot-scope="row">{{p.idx}}</th>
+              <td><a class="dark-link" :href="'/#/orga/' + p.id + '?lang=' + storage.lang">{{p.name}}</a></td>
               <td><span class="currency-parse">{{Math.round(p.value)}}</span></td>
             </tr>
               
@@ -415,14 +415,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-.btn.btn-link {
-  color: black;
-  border: solid 1px black;
-}
-.btn.btn-link:hover, .btn.btn-link:focus {
-  color: grey;
-  border: solid 1px grey;
-}
 
 </style>

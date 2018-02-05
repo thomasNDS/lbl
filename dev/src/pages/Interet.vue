@@ -10,68 +10,193 @@
         </li>
         <li class="breadcrumb-item">
           <a :href="'#/activities?lang=' + storage.lang">
-             {{trans[45]}} <!-- Activities -->
+             {{trans[171]}} <!-- Activities -->
           </a>
         </li>
         <li class="breadcrumb-item active">
-          {{trans[122 + parseInt(interet.idLang)]}}
+          {{trans[121 + parseInt(interet.idLang)]}}
         </li>
       </ol>
 
       <h1>
             <img id="titleImg"
-              :src="storage.ctxDist + '/static/' + compactId +'.svg'" 
+              :src="storage.ctxDist + '/static/img/interets/' + compactId +'.svg'" 
               class="icon-global"/>
-            {{trans[122 + parseInt(interet.idLang)]}}
+            {{trans[121 + parseInt(interet.idLang)]}}
       </h1>
       <hr class="my-4"/>
     </div>
     <div id="block-info">
       <div class="container">
               
-        <h3 id="Presentation" class="sub-t1">
+        <h2 id="Presentation" class="sub-t1">
               Statistiques <!-- Presentation -->
-        </h3>
+        </h2>
         <div class="">
         
-        <p>
-         {{Math.round(interet.perNbLobby * 1000)/10}} % sont intéréssé par le sujet.<br/>
-         Soit {{interet.nbLobby}} lobbys et  {{Math.round(interet.nbLobbyist)}} personnes<br/> 
-        </p>
-        <p class="lbl-badge"><span class="eme-parse">{{interet.rankNbLobby}}</span>/ 27</p>  
+          <p>
+          {{Math.round(interet.perNbLobby * 1000)/10}} % {{trans[161] /* des lobbys déclares */}}.<br/>
+          Soit {{interet.nbLobby}} {{trans[162] /* organisations et */}} {{Math.round(interet.nbLobbyist)}}
+           {{trans[71] /* personnes impliques */}}. <br/> 
+          </p>
+          <p class="lbl-badge"><span class="eme-parse">{{interet.rankNbLobby}}</span>/ 27</p>  
 
-      <p>
-         {{Math.round(interet.cash) | currency}} € de dépenses sur ce sujet.<br/>
-         Soit {{(interet.cash /interet.nbLobby).toFixed(0) | currency }} € en moyenne par organisation
-         
-         et {{(interet.cash /511800000).toFixed(2) }} € par <span id="citizen" class="lbl-has-tooltip">citoyen européen</span>.
-         <b-tooltip target="citizen" delay="500" placement="bottom" triggers="hover click"> 
-           Sur la base de 511.8 millions de citoyens. 
-            <b-link class="text-secondary" href="http://ec.europa.eu/eurostat/tgm/table.do?tab=table&language=en&pcode=tps00001&tableSelection=1&footnotes=yes&labeling=labels&plugin=1">
-            Données Eurostat 2017
-            </b-link>
-            </b-tooltip>
-          <br/>
-        </p>
-        <p class="lbl-badge"><span class="eme-parse">{{interet.rankCash}}</span>/ 27</p>  
+          <div class="lbl-progress">
+            <i :class="{'lbl-selected': (interet.rankNbLobby <= 28 - i*(27/18))}" v-for="i in 18" :key="i" class="fa fa-male icon-stat" aria-hidden="true"></i>
+          </div>
+          <hr/>
 
-        </div> <!-- End row -->
+          <p>
+            {{trans[163] /* On estime que */}} {{Math.round(interet.cash) | currency}} € {{trans[164] /* sont dépensés chaque */}}.<br/>
+            {{trans[67] /* Soit */}} {{(interet.cash /interet.nbLobby).toFixed(0) | currency }} € {{trans[165] /* en moyenne par organisation */}}
+             {{(interet.cash /511800000).toFixed(2) }} € {{trans[166] /* by */}} <span id="citizen" class="lbl-has-tooltip">{{trans[167] /* citoyen européen */}}</span>.
+            <b-tooltip target="citizen" delay="500" placement="bottom" triggers="hover click"> 
+             {{trans[168] /* Sur la base de */}} 511.8 {{trans[169] /* millions de citoyens */}}. 
+                <b-link class="text-secondary" href="http://ec.europa.eu/eurostat/tgm/table.do?tab=table&language=en&pcode=tps00001&tableSelection=1&footnotes=yes&labeling=labels&plugin=1">
+                 {{trans[170] /* Données Eurostat 2017 */}}
+                </b-link>
+                </b-tooltip>
+              <br/>
+            </p>
+            <p class="lbl-badge"><span class="eme-parse">{{interet.rankCash}}</span>/ 27</p>  
+
+            <div class="lbl-progress">
+              <i :class="{'lbl-selected': (interet.rankCash <= 28 - i*(27/18))}" v-for="i in 18" :key="i" class="fa fa-eur icon-stat" aria-hidden="true"></i>
+            </div>
+            <br/>
+         </div> <!-- End row -->
       </div><!-- End container -->
       
       <div class="part-split">
         <div class="container">
         
-      <!-- ****************** -->
-      <!--    Countries    -->
-      <!-- ****************** -->
-          <h3 id="Countries" class="sub-t1">Countries</h3>
-          
-            {{interet.topCountries}}
+        <!-- ****************** -->
+        <!--    Countries       -->
+        <!-- ****************** -->
+        <b-button-group class="float-right">
+          <b-button v-on:click="viewCountry = 0" :variant="viewCountry == 0 && 'dark' || 'default'">
+            <i class="fa fa-users" aria-hidden="true"/>
+          </b-button>
+          <b-button v-on:click="viewCountry = 1" :variant="viewCountry == 1 && 'dark' || 'default'">
+            <i class="fa fa-eur" aria-hidden="true"/>
+          </b-button>
+        </b-button-group>
 
+      <h2 id="Countries" class="sub-t1">{{trans[45] /* Countries */}}</h2>
+
+        <!-- TOP COUNTRY PEOPLE -->
+        <b-table  :items="interet.topCountriesNb"
+                  :striped="true"
+                  v-if="viewCountry == 0"
+                  :fields="[{key:'index', label: 'index'}, {key:'country', label: this.trans[5]}, {key:'nbLobby', label:  this.trans[56]}]">
+
+          <template slot="index" slot-scope="data">
+            {{data.index + 1}}
+          </template>
+
+          <template slot="country" slot-scope="row">
+            <a style="color:#002d54;" :href="'#/country/' + row.item[0]"> {{row.item[0]}} </a>
+          </template>
+
+          <template slot="nbLobby" slot-scope="row">
+            {{row.item[1]}}
+          </template>
+
+        <!-- TOP COUNTRY CASH -->
+        </b-table>
+                <b-table  :items="interet.topCountriesCash"
+                  :striped="true"
+                  v-if="viewCountry == 1"
+                  :fields="[{key:'index', label: 'index'}, {key:'country', label: this.trans[5]}, {key:'cash', label: this.trans[74]}]">
+
+          <template slot="index" slot-scope="data">
+            {{data.index + 1}}
+          </template>
+
+          <template slot="country" slot-scope="row">
+            <a style="color:#002d54;" :href="'#/country/' + row.item[0]"> {{row.item[0]}} </a>
+          </template>
+
+          <template slot="cash" slot-scope="row">
+            {{Math.round(row.item[1]) | currency }} €
+          </template>
+        </b-table>
+
+          <br/>
         </div><!-- End container -->
       </div>
-               {{interet.topLobbyCash}}
-         {{interet.topLobbyPeople}}
+        <div class="container">
+        
+        <!-- ****************** -->
+        <!--    Organisations   -->
+        <!-- ****************** -->
+        <b-button-group class="float-right">
+          <b-button v-on:click="viewOrga = 0" :variant="viewOrga == 0 && 'dark' || 'default'">
+            <i class="fa fa-users" aria-hidden="true"/>
+          </b-button>
+          <b-button v-on:click="viewOrga = 1" :variant="viewOrga == 1 && 'dark' || 'default'">
+            <i class="fa fa-eur" aria-hidden="true"/>
+          </b-button>
+        </b-button-group>
+
+        <h2 id="Lobbys" class="sub-t1">Lobbys</h2>
+        
+          <!-- TOP LOBBY PEOPLE -->
+          <b-table  :items="interet.topLobbyPeople"
+            :striped="true"
+            v-if="viewOrga == 0"
+            :fields="[{key:'index', label: 'index'}, {key:'lobby', label: this.trans[1]}, {key:'nbLobby', label: this.trans[56]}]">
+
+            <template slot="index" slot-scope="data">
+              {{data.index + 1}}
+            </template>
+
+            <template slot="lobby" slot-scope="row">
+              <a style="color:#002d54;" :href="'#/orga/' + row.item[0]"> {{row.item[1]}} </a>
+            </template>
+
+            <template slot="nbLobby" slot-scope="row">
+              {{row.item[2]}}
+            </template>
+          </b-table>
+
+          <!-- TOP LOBBY CASH -->
+          <b-table  :items="interet.topLobbyCash"
+                    :striped="true"
+                    v-if="viewOrga == 1"
+                    :fields="[{key:'index', label: 'index'}, {key:'lobby', label: this.trans[1]}, {key:'cash', label: this.trans[74]}]">
+
+          <template slot="index" slot-scope="data">
+              {{data.index + 1}}
+            </template>
+
+            <template slot="lobby" slot-scope="row">
+              <a style="color:#002d54;" :href="'#/orga/' + row.item[0]"> {{row.item[1]}} </a>
+            </template>
+
+            <template slot="cash" slot-scope="row">
+              {{Math.round(row.item[2]) | currency }} €
+            </template>
+          </b-table>
+          <br/>
+        </div><!-- End container -->
+
+        <div class="part-split">
+          <div class="container">
+
+             <h2 id="AllInterets" :storage="storage" class="sub-t1">Autres interets</h2>
+
+            <all-interets :storage="storage"></all-interets>
+            <br/>
+          </div><!-- End container -->
+        </div>  <!-- part-split -->
+
+       <p class="text-center" style="color: ##6b6b6b;" v-if="interet.lastUpdate && interet.lastUpdate !== ''">
+          {{trans[38]}} <!--  LastUpdate -->
+            <span class="data date-parse">
+              {{ interet.lastUpdate | date }}
+            </span>
+        </p>
     </div> <!-- End block-header -->
   </div>
 
@@ -79,17 +204,21 @@
 
 <script>
 import bus from "../components/EventBus.js";
+import AllInteretsList from "../components/AllInteretsList.vue";
 
 export default {
   name: "interet",
   props: ["storage"],
   components: {
+    "all-interets": AllInteretsList
   },
   data() {
     return {
       trans: this.storage.trans || [],
       interet: [],
-      showTopBudget : true
+      interets: [],
+      viewCountry : 0, // 0 : nb, 1 : cash
+      viewOrga : 0, // 0 : nb, 1 : cash
     };
   },
   methods: {
@@ -98,8 +227,8 @@ export default {
 
       this.$http.get(this.storage.cacheUrl + "interet/" + idPage + '.json').then(
         response => {
-          console.log("response.body")
-          console.log(response.body)
+          //console.log("response.body")
+          //console.log(response.body)
           this.interet = response.body;
         },
         response => {
@@ -107,6 +236,35 @@ export default {
         }
       );
     },
+    /** */
+    loadInterets: function() {
+
+      if (this.storage.interets) {
+        this.interets = this.storage.interets
+      } else {
+
+        this.$http.get(this.storage.cacheUrl + "interets.json").then(
+          response => {
+          //  console.log("response.body")
+          //  console.log(response.body)
+            this.interets = response.body.interets
+            this.storage.interets = this.interets 
+          },
+          response => {
+            console.error("error loading page");
+          }
+        ); // end http
+
+      } // end else
+    },
+
+    compactIdFun: function(int)  {
+         if (int.id) {
+           return int.id.slice(0,4) +  int.id.slice(-2)
+         } else {
+           return "loading"
+         }
+       },
 
   },
   watch: {
@@ -117,36 +275,11 @@ export default {
   computed: {
        compactId: function()  {
          if (this.interet.id) {
-         return this.interet.id.slice(0,4) +  this.interet.id.slice(-2)
+           return this.interet.id.slice(0,4) +  this.interet.id.slice(-2)
          } else {
            return "loading"
          }
-         },
-     
-       topBudget: function() { 
-         if (!this.interet.topLobbyCash) return []
-         var cpt = 0
-         return this.interet.topLobbyCash.map(function(c){
-             var r = {}
-             r.id = c[0]
-             r.name = c[1]
-             r.value = c[2]
-             r.idx = cpt++
-             return r
-         })
-        },
-        topPeople: function() { 
-          if (!this.interet.topLobbyPeople) return []
-          var cpt = 0
-          return this.interet.topLobbyPeople.map(function(c){
-             var r = {}
-             r.id = c[0]
-             r.name = c[1]
-             r.value = c[2]
-             r.idx = cpt++
-             return r
-          })
-         },
+       },
 
     getDescription: function() {
          if (this.interet && this.interet.id) {
@@ -164,6 +297,8 @@ export default {
       this.trans = this.storage.trans;
     });
     this.loadPage(this.$route.params.id)
+
+    this.loadInterets()
   },
   head: {
     meta: [

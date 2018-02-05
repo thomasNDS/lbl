@@ -420,13 +420,5 @@ export default {
 
 <style>
 
-  .icon-interest {
-    width: 46px;
-    margin-left: 0.3em;
-    filter: opacity(0.7);
-  }
-    .icon-interest:hover {
-    filter: opacity(0.45);
-  }
 
 </style>

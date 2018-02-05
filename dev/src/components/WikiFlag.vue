@@ -62,7 +62,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+
  #flag-wiki {
    width: 50px;
    height: 35px;

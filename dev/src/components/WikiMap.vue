@@ -69,7 +69,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+
  #lbl-map-img {
    width: 420px;
    float: right;

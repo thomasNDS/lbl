@@ -2,7 +2,7 @@
   <div>
 
       <div class="container text-center">
-        <h1 class="display-4">{{trans[45]}} <!-- Countries --></h1>
+        <h1 class="display-4">{{trans[45]}} <!-- Activities --></h1>
 
         <!-- Button bar -->
         <b-row align-h="end">
@@ -66,21 +66,21 @@
                   :fields="fields"
                    v-if="view == 1">
 
-           <template slot="country" scope="row">
+           <template slot="country" slot-scope="row">
            <a style="color:#002d54;" :href="'#/country/' + row.item.id"> {{row.item.id}} </a>
           </template>
-          <template slot="lobbys" scope="row">
+          <template slot="lobbys" slot-scope="row">
             {{row.item.nborg}}
           </template>
-          <template slot="budget" scope="row">
+          <template slot="budget" slot-scope="row">
             <span v-if="row.item.budget !== '#N/A' && row.item.budget > 0">{{row.item.budget | currency}} €</span>
             <span v-else style="font-size:0.75em;">N/A</span>
           </template>
-          <template slot="lobbyists" scope="row">
+          <template slot="lobbyists" slot-scope="row">
             {{row.item.nblobbys}}
           </template>
-          <template slot="Europe" scope="row">
-             <img v-if="row.item.isEu" :src="storage.ctxDist + '/static/europe.png'" style="height:1.3em;" />
+          <template slot="Europe" slot-scope="row">
+             <img v-if="row.item.isEu" :src="storage.ctxDist + '/static/img/europe.png'" style="height:1.3em;" />
           </template>
         </b-table>
 
@@ -89,7 +89,7 @@
          :href="'#/country/' + country.id" v-for="country in filteredCountries" :key="country.id">
           <b-card no-body class="card-block" >
 
-              <b-card-img v-if="country.isEu" :src="storage.ctxDist + '/static/europe.png'"
+              <b-card-img v-if="country.isEu" :src="storage.ctxDist + '/static/img/europe.png'"
                           alt="europe flag" class="flag-eu"
                           top></b-card-img>
 
