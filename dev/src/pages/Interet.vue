@@ -39,10 +39,10 @@
           Soit {{interet.nbLobby}} {{trans[162] /* organisations et */}} {{Math.round(interet.nbLobbyist)}}
            {{trans[71] /* personnes impliques */}}. <br/> 
           </p>
-          <p class="lbl-badge"><span class="eme-parse">{{interet.rankNbLobby}}</span>/ 27</p>  
+          <p class="lbl-badge"><span class="eme-parse">{{interet.rankNbLobby}}</span>/ 37</p>  
 
           <div class="lbl-progress">
-            <i :class="{'lbl-selected': (interet.rankNbLobby <= 28 - i*(27/18))}" v-for="i in 18" :key="i" class="fa fa-male icon-stat" aria-hidden="true"></i>
+            <i :class="{'lbl-selected': (interet.rankNbLobby <= 28 - i*(37/18))}" v-for="i in 18" :key="i" class="fa fa-male icon-stat" aria-hidden="true"></i>
           </div>
           <hr/>
 
@@ -58,10 +58,10 @@
                 </b-tooltip>
               <br/>
             </p>
-            <p class="lbl-badge"><span class="eme-parse">{{interet.rankCash}}</span>/ 27</p>  
+            <p class="lbl-badge"><span class="eme-parse">{{interet.rankCash}}</span>/ 37</p>  
 
             <div class="lbl-progress">
-              <i :class="{'lbl-selected': (interet.rankCash <= 28 - i*(27/18))}" v-for="i in 18" :key="i" class="fa fa-eur icon-stat" aria-hidden="true"></i>
+              <i :class="{'lbl-selected': (interet.rankCash <= 28 - i*(37/18))}" v-for="i in 18" :key="i" class="fa fa-eur icon-stat" aria-hidden="true"></i>
             </div>
             <br/>
          </div> <!-- End row -->
