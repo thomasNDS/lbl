@@ -310,18 +310,23 @@
 
     </div>
     <!-- End block-header -->
+
+    <lbl-error-modal ref="errorModal" :storage="storage" />
+
   </div>
 </template>
 
 <script>
 import bus from "../components/EventBus.js";
 import Map from "../components/Map.vue";
+import ErrorModal from "../components/ErrorModal.vue";
 
 export default {
   name: "app",
   props: ["storage", "lang"],
   components: {
-    "lbl-map": Map
+    "lbl-map": Map,
+    "lbl-error-modal": ErrorModal
   },
   data() {
     return {
@@ -342,6 +347,8 @@ export default {
         },
         response => {
           console.error("error loading page");
+          
+          this.$refs.errorModal.show()
         }
       );
     },

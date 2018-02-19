@@ -115,13 +115,23 @@
         </div>
 
       </div><!-- End container -->
-    </div>
+    </div><!-- End part-split -->
+
+    <div class="container">
+
+        <h2 id="AllInterets" :storage="storage" class="sub-t1">{{trans[174] /* Les organisations par domaines d'activités */}}</h2>
+
+      <all-interets :storage="storage"></all-interets>
+      <br/>
+    </div><!-- End container -->
+
   </div>
 </template>
 
 
    <script>
 
+import AllInteretsList from "../components/AllInteretsList.vue";
 import bus from '../components/EventBus.js'
 
 
@@ -129,6 +139,9 @@ export default {
   name: 'home',
   props: ['storage'],
 
+  components: {
+    "all-interets": AllInteretsList
+  },
   data() {
     return {
       trans: this.storage.trans || []

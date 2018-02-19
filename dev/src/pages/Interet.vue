@@ -30,7 +30,7 @@
       <div class="container">
               
         <h2 id="Presentation" class="sub-t1">
-              Statistiques <!-- Presentation -->
+              {{trans[172] /* Statistiques */}} <!-- Statistiques -->
         </h2>
         <div class="">
         
@@ -73,6 +73,13 @@
         <!-- ****************** -->
         <!--    Countries       -->
         <!-- ****************** -->
+
+      <h2 id="Countries" class="sub-t1">{{trans[45] /* Countries */}}</h2>
+
+        <lbl-map-activities :selected="interet.topCountriesNb" :title="trans[121 + parseInt(interet.idLang)]"></lbl-map-activities>
+
+        <hr/><br/><br/>
+
         <b-button-group class="float-right">
           <b-button v-on:click="viewCountry = 0" :variant="viewCountry == 0 && 'dark' || 'default'">
             <i class="fa fa-users" aria-hidden="true"/>
@@ -82,7 +89,7 @@
           </b-button>
         </b-button-group>
 
-      <h2 id="Countries" class="sub-t1">{{trans[45] /* Countries */}}</h2>
+      <br/><br/>
 
         <!-- TOP COUNTRY PEOPLE -->
         <b-table  :items="interet.topCountriesNb"
@@ -184,7 +191,7 @@
         <div class="part-split">
           <div class="container">
 
-             <h2 id="AllInterets" :storage="storage" class="sub-t1">Autres interets</h2>
+             <h2 id="AllInterets" :storage="storage" class="sub-t1">{{trans[173] /* Autres interets */}}</h2>
 
             <all-interets :storage="storage"></all-interets>
             <br/>
@@ -205,12 +212,14 @@
 <script>
 import bus from "../components/EventBus.js";
 import AllInteretsList from "../components/AllInteretsList.vue";
+import MapActivities from "../components/MapActivities.vue";
 
 export default {
   name: "interet",
   props: ["storage"],
   components: {
-    "all-interets": AllInteretsList
+    "all-interets": AllInteretsList,
+    "lbl-map-activities": MapActivities
   },
   data() {
     return {
