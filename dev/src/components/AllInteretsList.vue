@@ -87,7 +87,6 @@ export default {
 
 .lbl-interet {
     margin: 0.3em;
-    line-height: 2em;
 }
 .lbl-interets {
    line-height: 4em;
