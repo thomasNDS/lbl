@@ -46,7 +46,7 @@
               <span class="info">{{trans[60]}} <!-- Population --> :</span> <span class="data currency-parse">{{country.pop }}</span> 
               {{trans[64]}} <!-- habitants -->
 
-              <span v-if="country.popDateRef != ''">({{trans[62]}}<!-- in --> {{country.popDateRef }})</span>
+              <span v-if="country.popDateRef != ''">({{trans[62]}}<!-- in --> {{country.popDateRef}})</span>
             </p>
             
             <!-- GPD -->
@@ -55,7 +55,7 @@
               <span class="info">{{trans[61]}} <!-- GPD --> :</span> <span class="data currency-parse">{{country.gpd }}</span> 
               ({{trans[63]}}<!-- millions de dollards -->
 
-              <span v-if="country.gpdDateRef != ''">({{trans[62]}}<!-- in --> {{country.gpdDateRef }})</span>
+              <span v-if="country.gpdDateRef != ''">({{trans[62]}}<!-- in --> {{country.gpdDateRef}})</span>
             </p>
 
           </div> <!-- End col -->
@@ -77,15 +77,15 @@
       <!-- ****************** -->
           <h3 id="Informations" class="sub-t1">{{trans[23]}} <!-- Informations --></h3>
           
-          <p><span style="font-size:2em"> {{country.nbLobby }} </span> {{trans[65]}} <!-- lobbys in brux -->.
+          <p><span style="font-size:2em"> {{country.nbLobby}} </span> {{trans[65]}} <!-- lobbys in brux -->.
               
               <br/><span v-if="percentBruxel > 0.05">
-                {{trans[67]}}<!-- Soit --> {{ Math.round(percentBruxel * 10) / 10 }} %
+                {{trans[67]}}<!-- Soit --> {{Math.round(percentBruxel * 10) / 10}} %
                 {{trans[66]}}<!-- de l'ensemble des lobbys -->.
               </span>
           </p>
             
-          <p class="lbl-badge"><span class="eme-parse">{{country.rankNbLobby }}</span>/ 125</p>  
+          <p class="lbl-badge"><span class="eme-parse">{{ country.rankNbLobby }}</span>/ 130</p>  
           <div class="lbl-progress">        
               <i :class="{'lbl-selected': (limitBruxel >= i*(100/18)-5)}" v-for="i in 18" :key="i" class="fa fa-building icon-stat" aria-hidden="true"></i>
           </div>
@@ -99,13 +99,13 @@
             {{trans[70]}}<!-- des dépenses totales -->.
           </span>
 
-          <p class="lbl-badge"><span class="eme-parse">{{country.rankCost }}</span> / 125</p>
+          <p class="lbl-badge"><span class="eme-parse">{{country.rankCost}}</span> / 130</p>
           <div class="lbl-progress">
               <i :class="{'lbl-selected': (limitCash >= i*(100/18)-5)}" v-for="i in 18" :key="i" class="fa fa-eur icon-stat" aria-hidden="true"></i>
           </div>
 
           <hr/>
-          <p> <span style="font-size:2em"> {{country.nbLobbyist }} </span> 
+          <p> <span style="font-size:2em"> {{country.nbLobbyist}} </span> 
             {{trans[71]}} <!-- personnes impliqués -->.
             <br/>
             <span v-if="percentPeople > 0.05">
@@ -113,7 +113,7 @@
                 {{trans[72]}}<!-- de l'ensemble des effectifs -->.
             </span>
           </p>
-          <p class="lbl-badge"><span class="eme-parse">{{country.rankNbLobbyist }}</span> / 125 </p>
+          <p class="lbl-badge"><span class="eme-parse">{{country.rankNbLobbyist}}</span> / 130 </p>
           <div class="lbl-progress">
             <i :class="{'lbl-selected': (limitPeople >= i*(100/18)-5)}" v-for="i in 18" :key="i" class="fa fa-male icon-stat" aria-hidden="true"></i>
           </div>

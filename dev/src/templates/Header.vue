@@ -128,12 +128,23 @@ export default {
             console.error("error " + status);
           }
         );
-    }
+    },
+  },
+  computed: {
+
+  },
+  head: {
+    link : [
+      { rel: "alternate", href: window.location.href.split('?')[0] + '?lang=EN', hreflang: "en" },
+      { rel: "alternate", href: window.location.href.split('?')[0] + '?lang=FR', hreflang: "fr" },
+      { rel: "alternate", href: window.location.href.split('?')[0], hreflang: "x-default" },
+    ]
   }
+
 };
 </script>
 
-<style lang="scss" scoped>
+<style>
 
 .navbar-light .navbar-brand.title {
   font-family: 'Bangers', cursive;
