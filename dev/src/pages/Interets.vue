@@ -2,7 +2,7 @@
   <div>
 
       <div class="container text-center">
-        <h1 class="display-4">{{trans[45]}} <!-- Activities --></h1>
+        <h1 class="display-4">ACTIVITIES{{trans[45]}} <!-- Activities --></h1>
 
         <!-- Button bar -->
         <b-row align-h="end">
@@ -18,94 +18,44 @@
             </b-button>
           </b-button-group>
         </b-row>
-        <b-row align-h="between">
-
-            <!-- SORT -->
-            <b-col sm style="text-align: left; padding:0.2em">
-              <b-button-group style="margin-left:2em;">
-                  <i class="fa fa-sort i-sort" aria-hidden="true"></i> 
-    
-                  <b-button id="lobbys" :variant="sort == 1 && 'link' || 'default'" v-on:click="sort = 1">lobbys</b-button>
-
-                  <b-button id="cash" :variant="sort == 0 && 'link' || 'default'" v-on:click="sort = 0"><!-- cash -->{{trans[74]}}</b-button>       
-
-                  <b-button id="lobbystes" :variant="sort == 2 && 'link' || 'default'" v-on:click="sort = 2"><!-- lobbystes -->{{trans[109]}}</b-button>
-              </b-button-group>
-              <b-tooltip target="cash" delay="1000">{{trans[113]}}</b-tooltip>
-              <b-tooltip target="lobbys" delay="1000">{{trans[114]}}</b-tooltip>
-              <b-tooltip  target="lobbystes" delay="1000">{{trans[115]}}</b-tooltip>
-            </b-col>
-
-            <!-- FILTERS -->
-            <b-col sm style="text-align: end; padding:0.2em">
-              <b-button-group style="margin-right:2.5em;">
-                  <i class="fa fa-filter  i-sort" aria-hidden="true"></i> 
-                  <b-button :variant="filterEu == 2 && 'link' || 'default'"  v-on:click="filterEu = 2"><!-- All -->{{trans[110]}}</b-button>
-                  
-                  <b-button id="eu" :variant="filterEu == 1 && 'link' || 'default'" v-on:click="filterEu = 1"><!-- EU -->{{trans[111]}}</b-button>
-
-                  <b-button id="noneu" :variant="filterEu == 0 && 'link' || 'default'" v-on:click="filterEu = 0"><!-- non EU -->{{trans[112]}}</b-button>
-                  
-              </b-button-group>
-              <b-tooltip  target="eu" delay="1000">{{trans[116]}}</b-tooltip>
-              <b-tooltip  target="noneu" delay="1000">{{trans[117]}}</b-tooltip>
-            </b-col>
-        </b-row>
       </div>
-
+      
       <!-- LOADING -->
       <p class="text-center">
-        <span v-if="countries.length == 0" class="fa fa-spinner fa-spin fa-2x fa-fw" style="margin-top:2em;"></span>
+        <span v-if="interets.length == 0" class="fa fa-spinner fa-spin fa-2x fa-fw" style="margin-top:2em;"></span>
       </p>
       <div class="container text-center">
 
         <!-- LIST VIEW -->
 
-        <b-table  :items="filteredCountries"
+        <b-table  :items="interets"
                   :striped="true"
                   :fields="fields"
                    v-if="view == 1">
 
-           <template slot="country" slot-scope="row">
-           <a style="color:#002d54;" :href="'#/country/' + row.item.id"> {{row.item.id}} </a>
+           <template slot="interet" slot-scope="row">
+           <a style="color:#002d54;" :href="'#/activity/' + row.item.id"> {{row.item.id}} </a>
           </template>
-          <template slot="lobbys" slot-scope="row">
-            {{row.item.nborg}}
-          </template>
-          <template slot="budget" slot-scope="row">
-            <span v-if="row.item.budget !== '#N/A' && row.item.budget > 0">{{row.item.budget | currency}} €</span>
-            <span v-else style="font-size:0.75em;">N/A</span>
-          </template>
-          <template slot="lobbyists" slot-scope="row">
-            {{row.item.nblobbys}}
-          </template>
-          <template slot="Europe" slot-scope="row">
-             <img v-if="row.item.isEu" :src="storage.ctxDist + '/static/img/europe.png'" style="height:1.3em;" />
-          </template>
+
+
         </b-table>
 
         <!-- CARD VIEW -->
         <a v-if="view == 0"
-         :href="'#/country/' + country.id" v-for="country in filteredCountries" :key="country.id">
+         :href="'#/activity/' + interet.id" v-for="interet in interets" :key="interet.id">
           <b-card no-body class="card-block" >
-
-              <b-card-img v-if="country.isEu" :src="storage.ctxDist + '/static/img/europe.png'"
-                          alt="europe flag" class="flag-eu"
+        
+              <b-card-img :src="storage.ctxDist + '/static/img/interets/' + compactIdFun(interet) +'.svg'" 
+                          :alt="trans[121 + parseInt(interet.idLang)] + ' icon'" class=""
                           top></b-card-img>
 
-              <h5 style="padding-left:5px;"> {{country.id}}</h5>
+              <h5 style="padding-left:5px;"> {{trans[121 + parseInt(interet.idLang)]}}</h5>
 
               <b-card-footer>
                   <i class="fa fa-building icon-start" aria-hidden="true"></i> 
-                  <span>{{country.nborg}} lobbys</span>
+                  <span>{{interet.nbLobby}} lobbys</span>
                   <br/>
-                  
-                  <span v-if="country.budget !== '#N/A'"><i class="fa fa-eur icon-start" aria-hidden="true" ></i>
-                  <span>{{country.budget | currency}}</span>
-                  <br/></span>
 
-                  <i class="fa fa-male icon-start" aria-hidden="true"></i>
-                  <span>{{country.nblobbys}} {{trans[109]}}</span>
               </b-card-footer>
           </b-card>
         </a>
@@ -118,16 +68,13 @@
 import bus from "../components/EventBus.js";
 
 export default {
-  name: "countries",
+  name: "activities",
   props: ["storage"],
 
   data() {
     return {
-      msg: "topPage",
-      countries: [],
+      interets: [],
       trans: this.storage.trans || [],
-      filterEu: 2, // 2:all, 0: non Eu, 1: only Eu
-      sort: 1, // 0:cash, 1: lobbys, 2: lobbyist
       view: 0, // 0: card, 1: list
     };
   },
@@ -138,11 +85,21 @@ export default {
     this.loadPage();
   },
   methods: {
+    
+    /** */
+    compactIdFun: function(int)  {
+      if (int.id) {
+        return int.id.slice(0,4) +  int.id.slice(-2)
+      } else {
+        return "loading"
+      }
+    },
     /** */
     loadPage: function(idPage) {
-      this.$http.get(this.storage.cacheUrl + "countries.json").then(
+      this.$http.get(this.storage.cacheUrl + "interets.json").then(
         response => {
-          this.countries = response.body.data;
+          //console.log(response.body.interets)
+          this.interets = response.body.interets;
         },
         response => {
           console.error("error loading page");
@@ -153,36 +110,10 @@ export default {
   },
   computed: {
     getDescription: function() {
-      return "Countries in european lobbys";
-    },
-    filteredCountries : function() {
-      var res = this.countries
-
-      if (this.filterEu < 2) {
-        res = res.filter(c => c.isEu == this.filterEu)
-      }
-      switch (this.sort) {
-        case 0 :
-        // cash
-        res = res.sort(function(a, b) { return a.rankbudget - b.rankbudget })
-        break;
-        case 1 :
-        // lobby 
-        res = res.sort(function(a, b) { return a.ranknborg - b.ranknborg })
-        break;
-        case 2 :
-        default :
-        // lobbyist
-        res = res.sort(function(a, b) { return a.ranknblobbys - b.ranknblobbys })
-      } 
-      return res
+      return "Activities in european lobbys";
     },
     fields : function() {
-      var res =  [{key:'country', label: this.trans[5]}, 
-                  {key:'budget', label: this.trans[74]}, 
-                  {key:'lobbys', label: 'Lobbys'},
-                  {key:'lobbyists', label: this.trans[109]},
-                ]
+      var res =  [{key:'interet', label: this.trans[5]}]
 
       if (this.filterEu == 2) {
         res.push({key:'Europe', label: 'Europe'})
