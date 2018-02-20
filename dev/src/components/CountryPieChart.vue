@@ -1,5 +1,5 @@
 <template>
-  <vue-chartist :data="data" :options="options" type="Pie"></vue-chartist>
+    <vue-chartist :data="data" :options="options" type="Pie"></vue-chartist>
 </template>
 
 <script>
@@ -44,7 +44,7 @@ export default {
 
 </script>
 
-<style lang="scss" scoped>
+<style>
 
 .ct-series-a {
   fill : #f8bbd0

@@ -80,7 +80,7 @@
             {{row.item.nblobbys}}
           </template>
           <template slot="Europe" slot-scope="row">
-             <img v-if="row.item.isEu" :src="storage.ctxDist + '/static/europe.png'" style="height:1.3em;" />
+             <img v-if="row.item.isEu" :src="storage.ctxDist + '/static/img/europe.png'" style="height:1.3em;" />
           </template>
         </b-table>
 
@@ -89,7 +89,7 @@
          :href="'#/country/' + country.id" v-for="country in filteredCountries" :key="country.id">
           <b-card no-body class="card-block" >
 
-              <b-card-img v-if="country.isEu" :src="storage.ctxDist + '/static/europe.png'"
+              <b-card-img v-if="country.isEu" :src="storage.ctxDist + '/static/img/europe.png'"
                           alt="europe flag" class="flag-eu"
                           top></b-card-img>
 

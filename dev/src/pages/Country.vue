@@ -138,7 +138,7 @@
           </thead>
           <tbody>
             <tr v-for="city in topCities" :key="city.idx">
-              <th slot-scope="row">{{city.idx}}</th>
+              <th>{{city.idx}}</th>
               <td>{{city.id | majuscule}}</td>
               <td>{{city.value}}</td>
             </tr>
@@ -182,7 +182,7 @@
           <tbody>      
             
             <tr v-for="status in orgaStatus" :key="status.idx">
-              <th slot-scope="row">{{status.idx}}</th>
+              <th>{{status.idx}}</th>
               <td>{{status.t}} </td>
               <td>{{status.value}}</td>
             </tr>      
@@ -223,7 +223,7 @@
             <tbody>
             
             <tr v-for="b in topBudget" :key="b.idx">
-              <th slot-scope="row">{{b.idx}}</th>
+              <th>{{b.idx}}</th>
               <td><a class="dark-link" :href="'/#/orga/' + b.id + '?lang=' + storage.lang">{{b.name}}</a></td>
               <td><span class="currency-parse">{{Math.round(b.value) | currency}}</span> €</td>
             </tr>
@@ -251,7 +251,7 @@
             <tbody>
             
             <tr v-for="p in topPeople" :key="p.idx">
-               <th slot-scope="row">{{p.idx}}</th>
+               <th>{{p.idx}}</th>
               <td><a class="dark-link" :href="'/#/orga/' + p.id + '?lang=' + storage.lang">{{p.name}}</a></td>
               <td><span class="currency-parse">{{Math.round(p.value)}}</span></td>
             </tr>
