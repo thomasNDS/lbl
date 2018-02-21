@@ -100,7 +100,7 @@
                   <span>{{country.nborg}} lobbys</span>
                   <br/>
                   
-                  <span v-if="country.budget !== '#N/A'"><i class="fa fa-eur icon-start" aria-hidden="true" ></i>
+                  <span v-if="country.budget !== '#N/A'"><i class="fas fa-euro-sign icon-start" aria-hidden="true" ></i>
                   <span>{{country.budget | currency}}</span>
                   <br/></span>
 

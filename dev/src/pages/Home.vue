@@ -61,7 +61,7 @@
           <div class="card lbl-card-home">
             <div class="card-body">
               <h5 class="card-title">
-                <i class="fa fa-bar-chart fa-1-5x" aria-hidden="true"> </i>
+                <i class="fa fa-chart-bar fa-1-5x" aria-hidden="true"> </i>
                 {{trans[43]}}.
                 <!-- detailled -->
               </h5>
@@ -105,14 +105,17 @@
             <div class="col-md-12">
               <a :href="'#/countries?lang=' + storage.lang" class="no-underline">
               
-              <b-card style="margin-bottom:2em;font-size:1.5em;" bg-variant="light" text-variant="pink">
-                <i class="fa fa-globe"></i>
-                {{trans[118]}}<!--Liste des différents pays-->
-              </b-card>
+          <b-btn class="mt-3" variant="outline-primary" block
+             style="margin-bottom:2em;font-size:1.5em;padding:0.7em;" 
+             bg-variant="secondary" 
+             text-variant="dark">
+
+                  <i class="fa fa-globe"></i>
+                  {{trans[118]}}<!--Liste des différents pays-->
+                </b-btn>
               </a>
-          </div>
-          
-        </div>
+          </div><!-- End col -->
+        </div><!-- End row -->
 
       </div><!-- End container -->
     </div><!-- End part-split -->
@@ -122,6 +125,23 @@
         <h2 id="AllInterets" :storage="storage" class="sub-t1">{{trans[174] /* Les organisations par domaines d'activités */}}</h2>
 
       <all-interets :storage="storage"></all-interets>
+
+      <div class="row text-center" style="margin-top:2em;">
+        <div class="col-md-12">
+
+          <a :href="'#/activities?lang=' + storage.lang" class="no-underline">
+
+            <b-btn class="mt-3" variant="outline-secondary" block
+             style="margin-bottom:2em;font-size:1.5em;padding:0.7em;" 
+             bg-variant="secondary" 
+             text-variant="dark">
+
+              <i class="fas fa-thumbtack"></i>
+              {{trans[179]}}<!--Liste des différents pays-->
+            </b-btn>
+          </a>
+      </div><!-- End col -->
+    </div><!-- End row -->
       <br/>
     </div><!-- End container -->
 
@@ -184,5 +204,10 @@ export default {
 }
 .home-img-col {
   margin-bottom: 2em;
+}
+
+.card.lbl-card-home {
+    min-height: 240px;
+    margin-bottom: 1.5em;
 }
 </style>

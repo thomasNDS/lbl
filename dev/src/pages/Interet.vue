@@ -61,7 +61,7 @@
             <p class="lbl-badge"><span class="eme-parse">{{interet.rankCash}}</span>/ 37</p>  
 
             <div class="lbl-progress">
-              <i :class="{'lbl-selected': (interet.rankCash <= 38 - i*(37/18))}" v-for="i in 18" :key="i" class="fa fa-eur icon-stat" aria-hidden="true"></i>
+              <i :class="{'lbl-selected': (interet.rankCash <= 38 - i*(37/18))}" v-for="i in 18" :key="i" class="fas fa-euro-sign icon-stat" aria-hidden="true"></i>
             </div>
             <br/>
          </div> <!-- End row -->
@@ -85,7 +85,7 @@
             <i class="fa fa-users" aria-hidden="true"/>
           </b-button>
           <b-button v-on:click="viewCountry = 1" :variant="viewCountry == 1 && 'dark' || 'default'">
-            <i class="fa fa-eur" aria-hidden="true"/>
+            <i class="fas fa-eur-sign" aria-hidden="true"/>
           </b-button>
         </b-button-group>
 
@@ -142,7 +142,7 @@
             <i class="fa fa-users" aria-hidden="true"/>
           </b-button>
           <b-button v-on:click="viewOrga = 1" :variant="viewOrga == 1 && 'dark' || 'default'">
-            <i class="fa fa-eur" aria-hidden="true"/>
+            <i class="fas fa-eur-sign" aria-hidden="true"/>
           </b-button>
         </b-button-group>
 

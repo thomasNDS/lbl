@@ -38,7 +38,7 @@
             </p>
 
             <p>
-              <i class="fa fa-pencil icon-start" aria-hidden="true"></i>
+              <i class="fa fa-pencil-alt icon-start" aria-hidden="true"></i>
               <span class="info">
                 {{trans[3]}} <!--  Registration date --> : </span>
               <span class="data date-parse">
@@ -46,13 +46,13 @@
               </span>
                  ({{formatDate(orga.registrationDate)}})
               <p>
-                <i class="fa fa-legal icon-start" aria-hidden="true"></i>
+                <i class="fa fa-balance-scale icon-start" aria-hidden="true"></i>
                 <span class="info">
                   {{trans[4]}} <!--  Legal Status --> :</span>
                 <span class="data"> {{orga.legal}} </span>
               </p>
               <p>
-                <i class="fa fa-flag-o icon-start" aria-hidden="true"></i>
+                <i class="far fa-flag icon-start" aria-hidden="true"></i>
                 <span class="info">
                   {{trans[5]}} <!--  Country --> :</span>
                 <a :href="'#/country/' + orga.country + '?lang=' + trans[0]">
@@ -199,7 +199,7 @@
 
         <!--  FIELDS of interest -->
         <div v-if="orga.interests != ''" class="row">
-          <i class="fa fa-exchange icon-start" aria-hidden="true"></i>
+          <i class="fa fa-exchange-alt icon-start" aria-hidden="true"></i>
           <span class="info">
             {{trans[35]}} <!--  Fields of interest --> :</span>
             <br/>

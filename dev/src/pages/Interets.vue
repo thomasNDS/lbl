@@ -2,7 +2,7 @@
   <div>
 
       <div class="container text-center">
-        <h1 class="display-4">ACTIVITIES{{trans[45]}} <!-- Activities --></h1>
+        <h1 class="display-4">{{trans[35]}} <!-- Interets --></h1>
 
         <!-- Button bar -->
         <b-row align-h="end">
@@ -37,6 +37,9 @@
            <a style="color:#002d54;" :href="'#/activity/' + row.item.id"> {{row.item.id}} </a>
           </template>
 
+           <template slot="lobbys" slot-scope="row">
+            {{row.item.nbLobby}}
+          </template>
 
         </b-table>
 
@@ -46,10 +49,12 @@
           <b-card no-body class="card-block" >
         
               <b-card-img :src="storage.ctxDist + '/static/img/interets/' + compactIdFun(interet) +'.svg'" 
-                          :alt="trans[121 + parseInt(interet.idLang)] + ' icon'" class=""
+                          :alt="trans[121 + parseInt(interet.idLang)] + ' icon'" class="icon-card"
                           top></b-card-img>
 
-              <h5 style="padding-left:5px;"> {{trans[121 + parseInt(interet.idLang)]}}</h5>
+              <h5 class="title-card"> 
+                {{trans[121 + parseInt(interet.idLang)]}}
+              </h5>
 
               <b-card-footer>
                   <i class="fa fa-building icon-start" aria-hidden="true"></i> 
@@ -113,7 +118,8 @@ export default {
       return "Activities in european lobbys";
     },
     fields : function() {
-      var res =  [{key:'interet', label: this.trans[5]}]
+      var res =  [{key:'interet', label: this.trans[172]},
+                  {key:'lobbys', label: 'lobbys'}]
 
       if (this.filterEu == 2) {
         res.push({key:'Europe', label: 'Europe'})
@@ -148,12 +154,17 @@ export default {
 
 <style lang="scss" scoped>
 
-.card-img-top.flag-eu {
-  padding-top:5px; 
-  height: 24px; 
-  width: auto; 
-  float:right;
-  padding-right: 4px;
+.title-card {
+  padding-left:5px;
+  min-height: 2.0em;
+  line-height: 1em;
+  margin-bottom: 1em;
+}
+
+.icon-card {
+  padding: 1em;
+  opacity: 0.5;
+  max-height: 90px;
 }
 
 .card.card-block {
@@ -162,6 +173,7 @@ export default {
   display: inline-block;
   margin: 0.3em;
   vertical-align: top;
+
 }
 .card.card-block:hover {
   color: rgb(44, 3, 22);

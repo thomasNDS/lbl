@@ -18,22 +18,21 @@
         <a href="https://twitter.com/share?url=https%3A//lobbyland.eu&related=Lobbyland%2CEU
                  &hashtags=lobbyland%2CEU
                  &text=Lobbyland, the EU lobby registry." class="footer-social-link">
-          <i class="fa fa-twitter" aria-hidden="true" target="_blank"></i>
+          <i class="fab fa-twitter" aria-hidden="true" target="_blank"></i>
         </a>
 
         <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//lobbyland.eu" class="footer-social-link">
-          <i class="fa fa-facebook" aria-hidden="true" target="_blank"></i>
+          <i class="fab fa-facebook" aria-hidden="true" target="_blank"></i>
         </a>
 
         <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//lobbyland.eu&title=lobbyland&summary=Lobbyland, the EU lobby registry.&source=" class="footer-social-link">
-          <i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i>
+          <i class="fab fa-linkedin" aria-hidden="true" target="_blank"></i>
         </a>
       </div>
 
     </div>
 
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet" crossorigin="anonymous"> 
   </div>
 </template>
 

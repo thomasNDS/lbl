@@ -101,7 +101,7 @@
 
           <p class="lbl-badge"><span class="eme-parse">{{country.rankCost}}</span> / 130</p>
           <div class="lbl-progress">
-              <i :class="{'lbl-selected': (limitCash >= i*(100/18)-5)}" v-for="i in 18" :key="i" class="fa fa-eur icon-stat" aria-hidden="true"></i>
+              <i :class="{'lbl-selected': (limitCash >= i*(100/18)-5)}" v-for="i in 18" :key="i" class="fas fa-euro-sign icon-stat" aria-hidden="true"></i>
           </div>
 
           <hr/>
@@ -202,7 +202,7 @@
         
       <b-button-group class="float-right lbl-combo-btn">
         <b-button v-on:click="showTopBudget = true" :variant="!showTopBudget && 'dark' || 'default'">
-          <i class="fa fa-eur" aria-hidden="true"/>
+          <i class="fas fa-euro-sign" aria-hidden="true"/>
         </b-button>
         <b-button v-on:click="showTopBudget = false" :variant="showTopBudget && 'dark' || 'default'">
           <i class="fa fa-users" aria-hidden="true"/>
