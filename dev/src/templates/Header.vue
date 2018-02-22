@@ -135,8 +135,8 @@ export default {
   },
   head: {
     link : [
-      { rel: "alternate", href: window.location.href.split('?')[0] + '?lang=EN', hreflang: "en-en" },
-      { rel: "alternate", href: window.location.href.split('?')[0] + '?lang=FR', hreflang: "fr-fr" },
+      { rel: "alternate", href: window.location.href.split('?')[0] + '?lang=EN', hreflang: "en-GB" },
+      { rel: "alternate", href: window.location.href.split('?')[0] + '?lang=FR', hreflang: "fr-FR" },
       { rel: "alternate", href: window.location.href.split('?')[0], hreflang: "x-default" },
     ]
   }

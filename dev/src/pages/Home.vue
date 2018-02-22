@@ -27,8 +27,7 @@
                 {{trans[39]}}
                 <!--  daily update  -->
               </h5>
-              <p class="card-text">{{trans[40]}}
-                <!-- data from europe commission -->
+              <p class="card-text">{{trans[40]}}.<!-- data from europe commission -->
               </p>
 
             </div>
@@ -206,8 +205,15 @@ export default {
   margin-bottom: 2em;
 }
 
+@media (min-width: 900px) {
+
+  .card.lbl-card-home {
+      min-height: 220px;
+
+  }
+}
+
 .card.lbl-card-home {
-    min-height: 240px;
     margin-bottom: 1.5em;
 }
 </style>

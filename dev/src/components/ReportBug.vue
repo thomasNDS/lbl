@@ -21,7 +21,7 @@
 import bus from "./EventBus.js";
 
 export default {
-  name: "error-modal",
+  name: "report-bug-modal",
   props: ["storage"],
 
   data() {

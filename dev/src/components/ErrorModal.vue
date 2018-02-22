@@ -8,10 +8,11 @@
         </h4>
         <p>{{trans[176]}}<!--  We apologize for any inconvenience this has caused -->.</p>
       </div>
-      <b-btn class="mt-3" variant="outline-primary" block
-       :href="'#/?lang=' + storage.lang">{{trans[177]}} <!--Retour Accueil--></b-btn>
-    </b-modal>
 
+      <b-btn class="mt-3" variant="outline-primary" block
+       :href="'#/?lang=' + storage.lang">{{trans[177]}} <!--Retour Accueil-->{{id}}</b-btn>
+
+    </b-modal>
 
     </div>
 
@@ -22,7 +23,7 @@ import bus from "./EventBus.js";
 
 export default {
   name: "error-modal",
-  props: ["storage"],
+  props: ["storage", "id"],
 
   data() {
     return {
@@ -34,15 +35,28 @@ export default {
     if (this.storage.trans != null) {
         this.trans = this.storage.trans
     }
+
     bus.$on("updateLang", section => {
       this.trans = this.storage.trans;
     });
   },
   methods: {
     show: function(date) {
-      
       this.$refs.myModalRef.show()
-    }
+      this.notifyError("|| id=" + this.id + " || Fail page = " + window.location.href)
+    },
+    /** */
+    notifyError: function(txt) {
+      console.log(this.storage.url + "&method=deadPage&context=modal&" + txt)
+      this.$http.get(this.storage.url + "&method=deadPage&context=modal&" + txt).then(
+        response => {
+           //console.log("error notify");
+         },
+        response => {
+          console.error("error notify");
+        }
+      );
+    },
 
   }, // end methods
    computed: {

@@ -193,7 +193,7 @@
             </div>
           </div>
           <div class="data" v-else>
-               {{orga.goal }}
+               {{orga.goal}}
           </div>
         </div>
 
@@ -205,12 +205,15 @@
             <br/>
           <p class="data text-center" style="margin-top:0.5em;">
 
+            
             <span v-for="interest in interestsAsList" v-bind:key="interest" >
-              <img :id="'ic-' + interest.slice(0,4) + interest.slice(-2)"
-              :src="storage.ctxDist + '/static/' + interest.slice(0,4) + interest.slice(-2) +'.svg'" class="icon-interest"/>
-              
-              <b-tooltip :target="'ic-' + interest.slice(0,4) + interest.slice(-2)">{{interest}}</b-tooltip>
+              <a :href="'#/activity/' + interest">
+                <img :id="'ic-' + interest.slice(0,4) + interest.slice(-2)"
+                :src="storage.ctxDist + '/static/' + interest.slice(0,4) + interest.slice(-2) +'.svg'" class="icon-interest"/>
+                </a>
+              <b-tooltip :target="'ic-' + interest.slice(0,4) + interest.slice(-2)">{{trans[121 + parseInt(interest.idLang)]}}</b-tooltip>
             </span>
+           
           </p>
         </div>
 
@@ -218,15 +221,14 @@
           <i class="fa fa-exchange icon-start" aria-hidden="true"></i>
           <span class="info">
             {{trans[13]}} <!--  Customers --> :</span>
-          <span class="data">
-            {{ orga.customers}}
+          <span class="data" v-html="orga.customers">
           </span>
         </p>
 
         <br/>
         <p v-if="orga.euInitiatives != ''">
           <i class="fa fa-bullseye icon-start" aria-hidden="true"></i>
-          <span class="info"> {{trans[14]}} <!-- EU initiatives --> :</span>
+          <span class="info"> {{trans[14]}} <!-- EU initiatives --> :</span><br/>
           <span class="data" v-html="orga.euInitiatives"> </span>
         </p>
         <br/>
@@ -274,8 +276,8 @@
             <i class="fa fa-sitemap icon-start" aria-hidden="true" v-if="orga.membership"></i>
             <span class="info">
               {{ trans[20] }} <!--  Membership --> :</span>
-            <span class="data">
-                {{ orga.membership }}
+            <span class="data" v-html="orga.membership">
+             
             </span>
           </p>
 
@@ -283,8 +285,7 @@
               <i class="fa fa-users icon-start" aria-hidden="true"></i>
               <span class="info">
                 {{ trans[21] }} <!--  Member organisations --> :</span>
-              <span class="data">
-                 {{ orga.memberOrga }}
+              <span class="data" v-html="orga.memberOrga">
               </span>
             </p>
 
@@ -311,7 +312,9 @@
     </div>
     <!-- End block-header -->
 
-    <lbl-error-modal ref="errorModal" :storage="storage" />
+    <lbl-error-modal ref="errorModal" :storage="storage" :id="$route.params.id"/>
+
+    <lbl-report-bug ref="reportError" :storage="storage" :id="$route.params.id"/>
 
   </div>
 </template>
@@ -320,13 +323,15 @@
 import bus from "../components/EventBus.js";
 import Map from "../components/Map.vue";
 import ErrorModal from "../components/ErrorModal.vue";
+import ReportBug from "../components/ReportBug.vue";
 
 export default {
   name: "app",
   props: ["storage", "lang"],
   components: {
     "lbl-map": Map,
-    "lbl-error-modal": ErrorModal
+    "lbl-error-modal": ErrorModal,
+    "lbl-report-bug": ReportBug
   },
   data() {
     return {
