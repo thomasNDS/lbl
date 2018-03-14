@@ -33,12 +33,12 @@ export default {
 
   data() {
     return {
-      trans: this.storage.trans || []
+      trans: this.storage.trans && this.storage.trans.g || []
     }
   },
   created() {
     bus.$on('updateLang', section => {
-      this.trans = this.storage.trans
+      this.trans = this.storage.trans.g
     });
   },
 

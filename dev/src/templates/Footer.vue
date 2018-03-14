@@ -49,7 +49,7 @@ export default {
   },
   created() {
      bus.$on('updateLang', section => {
-        this.trans = this.storage.trans
+        this.trans = this.storage.trans.g
       });
   },
   methods: {

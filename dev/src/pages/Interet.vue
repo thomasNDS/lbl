@@ -85,7 +85,7 @@
             <i class="fa fa-users" aria-hidden="true"/>
           </b-button>
           <b-button v-on:click="viewCountry = 1" :variant="viewCountry == 1 && 'dark' || 'default'">
-            <i class="fas fa-eur-sign" aria-hidden="true"/>
+            <i class="fas fa-euro-sign" aria-hidden="true"/>
           </b-button>
         </b-button-group>
 
@@ -142,7 +142,7 @@
             <i class="fa fa-users" aria-hidden="true"/>
           </b-button>
           <b-button v-on:click="viewOrga = 1" :variant="viewOrga == 1 && 'dark' || 'default'">
-            <i class="fas fa-eur-sign" aria-hidden="true"/>
+            <i class="fas fa-euro-sign" aria-hidden="true"/>
           </b-button>
         </b-button-group>
 
@@ -223,7 +223,7 @@ export default {
   },
   data() {
     return {
-      trans: this.storage.trans || [],
+      trans: this.storage.trans && this.storage.trans.g || [],
       interet: [],
       interets: [],
       viewCountry : 0, // 0 : nb, 1 : cash
@@ -303,31 +303,31 @@ export default {
   /** Init */
   created() {
     bus.$on("updateLang", section => {
-      this.trans = this.storage.trans;
+      this.trans = this.storage.trans.g
     });
     this.loadPage(this.$route.params.id)
 
     this.loadInterets()
   },
-  head: {
-    meta: [
-      { name: "Lobbyland", content: "Lobbyland" },
-      { name: "description", content: this.getDescription, id: "desc" },
-      // Twitter
-      { name: "twitter:title", content: this.getDescription },
-      // with shorthand
-      {
-        n: "twitter:description",
-        c: this.getDescription
-      },
-      // Google+ / Schema.org
-      { itemprop: "name", content: "Lobbyland" },
-      { itemprop: "description", content: this.getDescription },
+  metaInfo () {
+    return {meta: [
+              { name: "Lobbyland", content: "Lobbyland" },
+              { name: "description", content: this.getDescription, id: "desc" },
+              // Twitter
+              { name: "twitter:title", content: this.getDescription},
+              // with shorthand
+              {n: "twitter:description", c: this.getDescription},
 
-      // Facebook / Open Graph
-      { property: "og:title", content: this.getDescription }
-    ]
-  }
+              { name: "generator", content:"program"},
+              
+              // Google+ / Schema.org
+              { itemprop: "name", content: "Lobbyland" },
+              { itemprop: "description", content: this.getDescription},
+
+              // Facebook / Open Graph
+              { property: "og:title", content: this.getDescription}
+            ]}
+  },
 };
 </script>
 

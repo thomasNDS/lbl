@@ -153,11 +153,11 @@
         <div class="container">
         
       <!-- ******************** -->
-      <!-- Organization status  -->
+      <!-- Organizations status -->
       <!-- ******************** -->
       <b-button-group class="float-right lbl-combo-btn">
         <b-button v-on:click="showStatusGraph = true" :variant="!showStatusGraph && 'dark' || 'default'">
-          <i class="fa fa-pie-chart" aria-hidden="true"/>
+          <i class="fas fa-chart-pie" aria-hidden="true"/>
         </b-button>
         <b-button v-on:click="showStatusGraph = false" :variant="showStatusGraph && 'dark' || 'default'">
           <i class="fa fa-list-ol" aria-hidden="true"/>
@@ -289,7 +289,7 @@ export default {
   data() {
     return {
       msg: "topPage",
-      trans: this.storage.trans || [],
+      trans: this.storage.trans && this.storage.trans.g || [],
       country: [],
       showStatusGraph : true,
       showTopBudget : true
@@ -388,29 +388,29 @@ export default {
   /** Init */
   created() {
     bus.$on("updateLang", section => {
-      this.trans = this.storage.trans;
+      this.trans = this.storage.trans.g
     });
     this.loadPage(this.$route.params.id)
   },
-  head: {
-    meta: [
-      { name: "Lobbyland", content: "Lobbyland" },
-      { name: "description", content: this.getDescription, id: "desc" },
-      // Twitter
-      { name: "twitter:title", content: this.getDescription },
-      // with shorthand
-      {
-        n: "twitter:description",
-        c: this.getDescription
-      },
-      // Google+ / Schema.org
-      { itemprop: "name", content: "Lobbyland" },
-      { itemprop: "description", content: this.getDescription },
+  metaInfo () {
+    return {meta: [
+              { name: "Lobbyland", content: "Lobbyland" },
+              { name: "description", content: this.getDescription, id: "desc" },
+              // Twitter
+              { name: "twitter:title", content: this.getDescription},
+              // with shorthand
+              {n: "twitter:description", c: this.getDescription},
 
-      // Facebook / Open Graph
-      { property: "og:title", content: this.getDescription }
-    ]
-  }
+              { name: "generator", content:"program"},
+              
+              // Google+ / Schema.org
+              { itemprop: "name", content: "Lobbyland" },
+              { itemprop: "description", content: this.getDescription},
+
+              // Facebook / Open Graph
+              { property: "og:title", content: this.getDescription}
+            ]}
+  },
 };
 </script>
 

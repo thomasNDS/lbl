@@ -43,7 +43,7 @@ module.exports = {
       
       {
         test: /\.css$/,  
-        exclude: /node_modules/,  
+        /*exclude: /node_modules/,  */
         loaders: ['style-loader', 'css-loader'],
       },
       { 
@@ -66,10 +66,6 @@ module.exports = {
         loader: 'file-loader?name=fonts/[name].[ext]'
       },
       {
-        test: /\.json$/,
-        loader: 'file-loader?name=[path][name].[ext]&context=/static'
-      },
-      {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
@@ -80,7 +76,7 @@ module.exports = {
         }
       },
       {
-        test: /\.(png|jpg|gif|svg|json)$/,
+        test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]'
@@ -89,8 +85,7 @@ module.exports = {
     ]
   },
   devServer: {
-    historyApiFallback: true,
-    noInfo: true
+    historyApiFallback: true
   },
   performance: {
     hints: false

@@ -18,7 +18,6 @@ export default {
 
   data() {
     return {
-      trans: "",
       mapSrc: "loading",
       error : false
     };

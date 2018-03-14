@@ -81,36 +81,36 @@ export default {
 
   data() {
     return {
-      trans: this.storage.trans || []
+        trans: this.storage.trans && this.storage.trans.g || []
     }
   },
   created() {
     bus.$on('updateLang', section => {
-      this.trans = this.storage.trans
+      this.trans = this.storage.trans.g
     });
   },
   computed: {
        getDescription: function() { return "Lobbyland - Legal informations"},
   },
-  head: {
-    meta: [
-      { name: "Lobbyland", content: "Lobbyland" },
-      { name: "description", content: this.getDescription, id: "desc" },
-      // Twitter
-      { name: "twitter:title", content: this.getDescription },
-      // with shorthand
-      {
-        n: "twitter:description",
-        c: this.getDescription
-      },
-      // Google+ / Schema.org
-      { itemprop: "name", content: "Lobbyland" },
-      { itemprop: "description", content: this.getDescription },
+  metaInfo () {
+    return {meta: [
+              { name: "Lobbyland", content: "Lobbyland" },
+              { name: "description", content: this.getDescription, id: "desc" },
+              // Twitter
+              { name: "twitter:title", content: this.getDescription},
+              // with shorthand
+              {n: "twitter:description", c: this.getDescription},
 
-      // Facebook / Open Graph
-      { property: "og:title", content: this.getDescription }
-    ]
-  }
+              { name: "generator", content:"program"},
+              
+              // Google+ / Schema.org
+              { itemprop: "name", content: "Lobbyland" },
+              { itemprop: "description", content: this.getDescription},
+
+              // Facebook / Open Graph
+              { property: "og:title", content: this.getDescription}
+            ]}
+  },
 }
 </script>
 

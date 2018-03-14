@@ -63,7 +63,7 @@ export default {
   name: "lbl-header",
   data() {
     return {
-      trans: this.storage.trans | [],
+      trans: this.storage.trans && this.storage.trans.g || [],
       lang: this.storage.lang,
       results: [],
       searchedText: "",
@@ -112,12 +112,12 @@ export default {
     /** */
     loadLang: function() {
       this.$http
-        .get(this.storage.cacheUrl + "lang/" + this.storage.lang.toLowerCase() + ".json")
+        .get(this.storage.ctxDist + "/static/lang/" + this.storage.lang.toLowerCase() + "/global.json")
         .then(
           response => {
             //console.log(response)
-            this.storage.trans = response.body.langs;
-            this.trans = this.storage.trans;
+            this.storage.trans = response.body;
+            this.trans = this.storage.trans.g;
             this.lang = this.storage.lang;
 
             this.popoverDataContent = this.storage.trans[99];
@@ -129,18 +129,20 @@ export default {
           }
         );
     },
+
   },
   computed: {
 
   },
-  head: {
-    link : [
+
+  metaInfo () {
+    return {link: [
       { rel: "alternate", href: window.location.href.split('?')[0] + '?lang=EN', hreflang: "en-GB" },
       { rel: "alternate", href: window.location.href.split('?')[0] + '?lang=FR', hreflang: "fr-FR" },
-      { rel: "alternate", href: window.location.href.split('?')[0], hreflang: "x-default" },
+      { rel: "alternate", href: window.location.href.split('?')[0], hreflang: "x-default" }
     ]
+    }
   }
-
 };
 </script>
 

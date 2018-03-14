@@ -33,11 +33,11 @@ export default {
   mounted() {
 
     if (this.storage.trans != null) {
-        this.trans = this.storage.trans
+        this.trans = this.storage.trans.g
     }
 
     bus.$on("updateLang", section => {
-      this.trans = this.storage.trans;
+      this.trans = this.storage.trans.g
     });
   },
   methods: {

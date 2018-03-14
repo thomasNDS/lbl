@@ -31,7 +31,6 @@ export default {
 
   data() {
     return {
-      trans: "",
       zoomMap: "world"
     };
   },
@@ -74,7 +73,7 @@ export default {
     loadEuropeMap: function(selected) {
        
       if (selected) {
-       console.log(selected)
+       //console.log(selected)
 
        document.getElementById("lbl-map-activities").innerHTML= "" // Clear
         var zoomSize = this.zoomMap === "eu" && 540 || 100

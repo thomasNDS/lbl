@@ -337,7 +337,7 @@ export default {
     return {
       msg: "topPage",
       isTruncatedDescr: true,
-      trans: this.storage.trans || [],
+      trans: this.storage.trans && this.storage.trans.g || [],
       orga: {}
     };
   },
@@ -402,31 +402,29 @@ export default {
   /** Init */
   created() {
     bus.$on("updateLang", section => {
-      this.trans = this.storage.trans;
+      this.trans = this.storage.trans.g
     });
     this.loadOrga(this.$route.params.id)
   },
-  head: {
-    meta: [
-      { name: "Lobbyland", content: "Lobbyland" },
-      { name: "description", content: this.getDescription, id: "desc" }, // id to replace intead of create element
+  metaInfo () {
+    return {meta: [
+              { name: "Lobbyland", content: "Lobbyland" },
+              { name: "description", content: this.getDescription, id: "desc" },
+              // Twitter
+              { name: "twitter:title", content: this.getDescription},
+              // with shorthand
+              {n: "twitter:description", c: this.getDescription},
 
-      // Twitter
-      { name: "twitter:title", content: this.getDescription },
-      // with shorthand
-      {
-        n: "twitter:description",
-        c: this.getDescription
-      },
+              { name: "generator", content:"program"},
+              
+              // Google+ / Schema.org
+              { itemprop: "name", content: "Lobbyland" },
+              { itemprop: "description", content: this.getDescription},
 
-      // Google+ / Schema.org
-      { itemprop: "name", content: "Lobbyland" },
-      { itemprop: "description", content: this.getDescription },
-
-      // Facebook / Open Graph
-      { property: "og:title", content: this.getDescription }
-    ]
-  }
+              // Facebook / Open Graph
+              { property: "og:title", content: this.getDescription}
+            ]}
+  },
 };
 </script>
 

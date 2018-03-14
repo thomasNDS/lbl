@@ -14,14 +14,14 @@ import p404 from './pages/404.vue'
 
 import Styles from './styles/main.scss'
 
-import VueHead from 'vue-head'
+import Meta from 'vue-meta'
 import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
 import BootstrapVue from 'bootstrap-vue'
 import VueParticles from 'vue-particles'
 
 Vue.use(VueParticles)
-Vue.use(VueHead)
+Vue.use(Meta)
 Vue.use(VueResource)
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)

@@ -125,7 +125,7 @@ export default {
     return {
       msg: "topPage",
       countries: [],
-      trans: this.storage.trans || [],
+      trans: this.storage.trans && this.storage.trans.g || [],
       filterEu: 2, // 2:all, 0: non Eu, 1: only Eu
       sort: 1, // 0:cash, 1: lobbys, 2: lobbyist
       view: 0, // 0: card, 1: list
@@ -133,7 +133,7 @@ export default {
   },
   created() {
     bus.$on("updateLang", section => {
-      this.trans = this.storage.trans;
+      this.trans = this.storage.trans.g
     });
     this.loadPage();
   },
@@ -191,27 +191,25 @@ export default {
     }
 
   },
-  head: {
-    meta: [
-      { name: "Lobbyland", content: "Lobbyland" },
-      { name: "description", content: this.getDescription, id: "desc" },
+  metaInfo () {
+    return {meta: [
+              { name: "Lobbyland", content: "Lobbyland" },
+              { name: "description", content: this.getDescription, id: "desc" },
+              // Twitter
+              { name: "twitter:title", content: this.getDescription},
+              // with shorthand
+              {n: "twitter:description", c: this.getDescription},
 
-      // Twitter
-      { name: "twitter:title", content: this.getDescription },
-      // with shorthand
-      {
-        n: "twitter:description",
-        c: this.getDescription
-      },
+              { name: "generator", content:"program"},
+              
+              // Google+ / Schema.org
+              { itemprop: "name", content: "Lobbyland" },
+              { itemprop: "description", content: this.getDescription},
 
-      // Google+ / Schema.org
-      { itemprop: "name", content: "Lobbyland" },
-      { itemprop: "description", content: this.getDescription },
-
-      // Facebook / Open Graph
-      { property: "og:title", content: this.getDescription }
-    ]
-  }
+              // Facebook / Open Graph
+              { property: "og:title", content: this.getDescription}
+            ]}
+  },
 };
 </script>
 
