@@ -377,7 +377,7 @@ export default {
 
     getDescription: function() {
          if (this.country && this.country.id) {
-            return 'All about ' + this.country.id + 'lobbys'
+            return 'Presentation of europeans lobbys actived in Brussels based in ' + this.country.id
           } else {
             return 'Lobbyland'
           }

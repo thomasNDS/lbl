@@ -385,7 +385,7 @@ export default {
     computed: {
        getDescription: function() {
          if (this.orga && this.orga.name) {
-            return 'Lobbyland : ' + this.orga.name
+            return  this.orga.name + ' european lobby : ' + this.orga.goal.split(' ').slice(0,30).join(' ') + " ..."
           } else {
             return 'Lobbyland'
           }

@@ -90,7 +90,7 @@ export default {
     });
   },
   computed: {
-       getDescription: function() { return "Lobbyland - Legal informations"},
+       getDescription: function() { return "Lobbyland - Legals informations of the website."},
   },
   metaInfo () {
     return {meta: [

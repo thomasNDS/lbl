@@ -115,7 +115,7 @@ export default {
   },
   computed: {
     getDescription: function() {
-      return "Activities in european lobbys";
+      return "Differents interest of actives europeans lobbys in Brussels.";
     },
     fields : function() {
       var res =  [{key:'interet', label: this.trans[172]},

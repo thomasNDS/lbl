@@ -50,7 +50,7 @@ export default {
     });
   },
   computed: {
-       getDescription: function() { return "Lobbyland - DISCLAIMER"},
+       getDescription: function() { return "Lobbyland - Disclaimer of the website : " + this.trans[103]},
   },
   metaInfo () {
     return {meta: [

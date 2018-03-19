@@ -153,7 +153,7 @@ export default {
   },
   computed: {
     getDescription: function() {
-      return "Countries in european lobbys";
+      return "List of all actives countries in european lobbying in Brussels.";
     },
     filteredCountries : function() {
       var res = this.countries
