@@ -69,7 +69,6 @@
 
   </div>
 
-  </div>
 </template>
 
 <script>
@@ -93,7 +92,9 @@ export default {
        getDescription: function() { return "Lobbyland - Legals informations of the website."},
   },
   metaInfo () {
-    return {meta: [
+    return {
+      title: this.getDescription,
+      meta: [
               { name: "Lobbyland", content: "Lobbyland" },
               { name: "description", content: this.getDescription, id: "desc" },
               // Twitter

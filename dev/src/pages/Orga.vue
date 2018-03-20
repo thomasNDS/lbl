@@ -2,19 +2,21 @@
   <div id="wrap">
 
     <div class="container">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a v-bind:href="'#/?lang=' + storage.lang">
-            {{trans[53]}} <!--  Accueil -->
-          </a>
+      
+      <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a v-bind:href="'#/?lang=' + storage.lang" itemscope itemtype="http://schema.org/Thing" itemprop="item">
+            <span  itemprop="name">{{trans[53]}} <!--  Accueil --></span>
+          </a> <meta itemprop="position" content="1" />
         </li>
-        <li class="breadcrumb-item">
-          <a href="#">
-             {{trans[1]}} <!--  Lobby organization -->
-          </a>
+        <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a href="#" itemscope itemtype="http://schema.org/Thing" itemprop="item">
+             <span  itemprop="name">{{trans[1]}} <!--  Lobby organization --></span>
+          </a> <meta itemprop="position" content="2" />
         </li>
-        <li class="breadcrumb-item active">
-          {{orga.name}}
+        <li class="breadcrumb-item active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <span  itemprop="name">{{orga.name}}</span>
+           <meta itemprop="position" content="3" />
         </li>
       </ol>
 
@@ -407,7 +409,9 @@ export default {
     this.loadOrga(this.$route.params.id)
   },
   metaInfo () {
-    return {meta: [
+    return {
+      title : "Lobbyland - " + this.orga.name,
+      meta: [
               { name: "Lobbyland", content: "Lobbyland" },
               { name: "description", content: this.getDescription, id: "desc" },
               // Twitter

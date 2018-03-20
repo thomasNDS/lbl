@@ -115,7 +115,7 @@ export default {
   },
   computed: {
     getDescription: function() {
-      return "Differents interest of actives europeans lobbys in Brussels.";
+      return "Differents interests of actives europeans lobbys in Brussels.";
     },
     fields : function() {
       var res =  [{key:'interet', label: this.trans[172]},
@@ -129,7 +129,8 @@ export default {
 
   },
   metaInfo () {
-    return {meta: [
+    return {title: "Lobbyland - Activities",
+            meta: [
               { name: "Lobbyland", content: "Lobbyland" },
               { name: "description", content: this.getDescription, id: "desc" },
               // Twitter

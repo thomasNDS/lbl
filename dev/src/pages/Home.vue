@@ -183,7 +183,9 @@ export default {
        }
   },
   metaInfo () {
-    return {meta: [
+    return {
+      title : "Lobbyland - " + this.ltrans[1],
+      meta: [
               { name: "Lobbyland", content: "Lobbyland" },
               { name: "description", content: this.getDescription, id: "desc" },
               // Twitter

@@ -24,8 +24,6 @@
         <p/> {{trans[105]}} <!--  Le contenu de ce site est sous licence -->
         <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. 
         {{trans[106]}}. <!-- Vous pouvez réutilisez l'intégralité -->
-
-
         
     </div>
 
@@ -53,7 +51,9 @@ export default {
        getDescription: function() { return "Lobbyland - Disclaimer of the website : " + this.trans[103]},
   },
   metaInfo () {
-    return {meta: [
+    return {
+      title: this.getDescription,
+      meta: [
               { name: "Lobbyland", content: "Lobbyland" },
               { name: "description", content: this.getDescription, id: "desc" },
               // Twitter

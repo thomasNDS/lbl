@@ -2,19 +2,40 @@
   <div id="wrap">
 
     <div class="container">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a v-bind:href="'#/?lang=' + storage.lang">
-            {{trans[53]}} <!--  Accueil -->
+
+      <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a v-bind:href="'#/?lang=' + storage.lang" itemscope itemtype="http://schema.org/Thing" itemprop="item">
+            <span itemprop="name">{{trans[53]}} <!--  Accueil --></span>
           </a>
+          <meta itemprop="position" content="1" />
         </li>
-        <li class="breadcrumb-item">
-          <a :href="'#/countries?lang=' + storage.lang">
-             {{trans[45]}} <!-- Countries -->
+        <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a :href="'#/countries?lang=' + storage.lang" itemscope itemtype="http://schema.org/Thing" itemprop="item">
+             <span itemprop="name">{{trans[45]}} <!-- Countries --></span>
           </a>
+          <meta itemprop="position" content="2" />
         </li>
-        <li class="breadcrumb-item active">
-          {{country.id }}
+        <li class="breadcrumb-item active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <span itemprop="name">{{country.id }}</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+
+       <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a v-bind:href="'#/?lang=' + storage.lang" itemscope itemtype="http://schema.org/Thing" itemprop="item">
+            <span itemprop="name">{{trans[53]}} <!--  Accueil --></span>
+          </a><meta itemprop="position" content="1" />
+        </li>
+        <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a :href="'#/activities?lang=' + storage.lang" itemscope itemtype="http://schema.org/Thing" itemprop="item">
+             <span itemprop="name">{{trans[171]}} <!-- Activities --></span>
+          </a><meta itemprop="position" content="2" />
+        </li>
+        <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+            <span itemprop="name">{{trans[121 + parseInt(interet.idLang)]}}</span>
+          <meta itemprop="position" content="3" />
         </li>
       </ol>
 
@@ -393,7 +414,9 @@ export default {
     this.loadPage(this.$route.params.id)
   },
   metaInfo () {
-    return {meta: [
+    return {
+      title: "Lobbyland - " + this.getDescription,
+      meta: [
               { name: "Lobbyland", content: "Lobbyland" },
               { name: "description", content: this.getDescription, id: "desc" },
               // Twitter
