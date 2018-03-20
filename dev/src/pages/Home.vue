@@ -172,6 +172,19 @@ export default {
       this.gtrans = this.storage.trans.g
       this.ltrans = this.storage.trans.home
     });
+
+    let jsonLd = document.createElement('script');
+    jsonLd.setAttribute("type", "application/ld+json")
+    let jsonLdContent = {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "logo": "https://lobbyland.eu/dist/static/img/logo.png",
+      "url": "https://lobbyland.eu",
+      "availableLanguage": ["French", "English"]
+    }
+    jsonLd.innerHTML = jsonLdContent
+    document.head.appendChild(jsonLd);
+
   },
   methods: {
 
@@ -188,6 +201,7 @@ export default {
       meta: [
               { name: "Lobbyland", content: "Lobbyland" },
               { name: "description", content: this.getDescription, id: "desc" },
+              { name: "keywords", content: this.ltrans[2]},
               // Twitter
               { name: "twitter:title", content: this.getDescription},
               // with shorthand

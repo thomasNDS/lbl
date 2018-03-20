@@ -419,6 +419,7 @@ export default {
       meta: [
               { name: "Lobbyland", content: "Lobbyland" },
               { name: "description", content: this.getDescription, id: "desc" },
+              { name: "keywords", content: "europe,lobby,country," +   this.country.id},
               // Twitter
               { name: "twitter:title", content: this.getDescription},
               // with shorthand

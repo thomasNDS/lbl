@@ -407,6 +407,7 @@ export default {
       this.trans = this.storage.trans.g
     });
     this.loadOrga(this.$route.params.id)
+
   },
   metaInfo () {
     return {
@@ -414,6 +415,7 @@ export default {
       meta: [
               { name: "Lobbyland", content: "Lobbyland" },
               { name: "description", content: this.getDescription, id: "desc" },
+              { name: "keywords", content: "europe,lobby,transparency," +  this.orga.name},
               // Twitter
               { name: "twitter:title", content: this.getDescription},
               // with shorthand
