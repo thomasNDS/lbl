@@ -211,7 +211,7 @@
             <span v-for="interest in interestsAsList" v-bind:key="interest" >
               <a :href="'#/activity/' + interest">
                 <img :id="'ic-' + interest.slice(0,4) + interest.slice(-2)"
-                :src="storage.ctxDist + '/static/' + interest.slice(0,4) + interest.slice(-2) +'.svg'" class="icon-interest"/>
+                :src="storage.ctxDist + '/static/img/interets/' + interest.slice(0,4) + interest.slice(-2) +'.svg'" class="icon-interest"/>
                 </a>
               <b-tooltip :target="'ic-' + interest.slice(0,4) + interest.slice(-2)">{{trans[121 + parseInt(interest.idLang)]}}</b-tooltip>
             </span>
