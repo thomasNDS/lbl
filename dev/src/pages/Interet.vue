@@ -206,6 +206,21 @@
             </span>
         </p>
     </div> <!-- End block-header -->
+
+    <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "Dataset",
+          "name": "{{trans[121 + parseInt(interet.idLang)]}}",
+          "description": "{{getDescription}}",
+          "keywords": "interest,lobby,europe",
+          "variableMeasured" : "count, budgets, costs",
+          "identifier" : "{{interet.id}}",
+          "includedInDataCatalog" : "Lobbys interests",
+          "temporalCoverage" : "{{interet.lastUpdate | dateYMD}}"
+        }
+    </script>
+
   </div>
 
 </template>

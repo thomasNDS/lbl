@@ -32,6 +32,17 @@ Vue.filter('date', function(value) {
   }
 })
 
+Vue.filter('dateYMD', function(value) {
+  if (value) {
+    let valDate = new Date(value)
+    return [
+      valDate.getFullYear(),
+      valDate.getMonth() > 8 ? valDate.getMonth() + 1 : '0' +  (valDate.getMonth() + 1), 
+      valDate.getDate() > 9 ? valDate.getDate() : '0' + valDate.getDate(),  
+      ].join('-')
+  } else {return "NaN"}
+})
+
 Vue.filter('majuscule', function(value) {
   if (value) {
     return value.charAt(0).toUpperCase() + value.slice(1)
@@ -49,6 +60,7 @@ Vue.filter('currency', function(value) {
     return Number.parseFloat(value).toLocaleString();
   }
 })
+ 
 
 const store = {}
 store.url = 'https://script.google.com/macros/s/AKfycbxqd3bFwVpmY1hGrq0HNheCGIwiXoVIXBUB7CcDnsQ-_6uKHO8l/exec?nav=u'

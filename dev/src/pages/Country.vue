@@ -269,6 +269,18 @@
       </div><!-- End container -->
        
     </div> <!-- End block-header -->
+
+    <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "Dataset",
+          "name": "{{country.id}}",
+          "description": "{{getDescription}}",
+          "keywords": "country,lobby,europe",
+          "variableMeasured" : "count, budgets, costs",
+          "includedInDataCatalog" : "Lobbys by countries"
+        }
+    </script>
   </div>
 
 </template>

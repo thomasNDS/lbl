@@ -144,6 +144,16 @@
       <br/>
     </div><!-- End container -->
 
+<script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "logo": "https://lobbyland.eu/dist/static/img/logo.png",
+      "url": "https://lobbyland.eu",
+      "availableLanguage": ["French", "English"]
+    }
+</script>
+
   </div>
 </template>
 
@@ -172,18 +182,6 @@ export default {
       this.gtrans = this.storage.trans.g
       this.ltrans = this.storage.trans.home
     });
-
-    let jsonLd = document.createElement('script');
-    jsonLd.setAttribute("type", "application/ld+json")
-    let jsonLdContent = {
-      "@context": "http://schema.org",
-      "@type": "Organization",
-      "logo": "https://lobbyland.eu/dist/static/img/logo.png",
-      "url": "https://lobbyland.eu",
-      "availableLanguage": ["French", "English"]
-    }
-    jsonLd.innerHTML = jsonLdContent
-    document.head.appendChild(jsonLd);
 
   },
   methods: {

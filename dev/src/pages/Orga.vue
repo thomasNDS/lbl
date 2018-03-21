@@ -318,6 +318,20 @@
 
     <lbl-report-bug ref="reportError" :storage="storage" :id="$route.params.id"/>
 
+<script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Dataset",
+      "name": "{{orga.name}}",
+      "description": "{{getDescription}}",
+      "keywords": "Organization,lobby,europe",
+      "variableMeasured" : "count, budgets, costs",
+      "identifier" : "{{orga.id}}",
+      "includedInDataCatalog" : "Lobbys organization",
+      "temporalCoverage" : "{{orga.registrationDate | dateYMD}}/{{orga.lastUp| dateYMD}}"
+    }
+</script>
+
   </div>
 </template>
 
