@@ -67,7 +67,7 @@
                    v-if="view == 1">
 
            <template slot="country" slot-scope="row">
-           <a style="color:#002d54;" :href="'#/country/' + row.item.id"> {{row.item.id}} </a>
+           <a style="color:#002d54;" :href="'#/country/' + row.item.id + '?lang=' + storage.lang"> {{row.item.id}} </a>
           </template>
           <template slot="lobbys" slot-scope="row">
             {{row.item.nborg}}
@@ -86,7 +86,7 @@
 
         <!-- CARD VIEW -->
         <a v-if="view == 0"
-         :href="'#/country/' + country.id" v-for="country in filteredCountries" :key="country.id">
+         :href="'#/country/' + country.id + '?lang=' + storage.lang" v-for="country in filteredCountries" :key="country.id">
           <b-card no-body class="card-block" >
 
               <b-card-img v-if="country.isEu" :src="storage.ctxDist + '/static/img/europe.png'"

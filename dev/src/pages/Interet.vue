@@ -20,10 +20,10 @@
       </ol>
 
       <h1>
-            <img id="titleImg"
-              :src="storage.ctxDist + '/static/img/interets/' + compactId +'.svg'" 
-              class="icon-global"/>
-            {{trans[121 + parseInt(interet.idLang)]}}
+          <img id="titleImg"
+            :src="storage.ctxDist + '/static/img/interets/' + compactId +'.svg'" 
+            class="icon-global"/>
+          {{trans[121 + parseInt(interet.idLang)]}}
       </h1>
       <hr class="my-4"/>
     </div>
@@ -103,7 +103,7 @@
           </template>
 
           <template slot="country" slot-scope="row">
-            <a style="color:#002d54;" :href="'#/country/' + row.item[0]"> {{row.item[0]}} </a>
+            <a style="color:#002d54;" :href="'#/country/' + row.item[0] + '?lang=' + storage.lang"> {{row.item[0]}} </a>
           </template>
 
           <template slot="nbLobby" slot-scope="row">
@@ -122,7 +122,7 @@
           </template>
 
           <template slot="country" slot-scope="row">
-            <a style="color:#002d54;" :href="'#/country/' + row.item[0]"> {{row.item[0]}} </a>
+            <a style="color:#002d54;" :href="'#/country/' + row.item[0] + '?lang=' + storage.lang"> {{row.item[0]}} </a>
           </template>
 
           <template slot="cash" slot-scope="row">
@@ -160,7 +160,7 @@
             </template>
 
             <template slot="lobby" slot-scope="row">
-              <a style="color:#002d54;" :href="'#/orga/' + row.item[0]"> {{row.item[1]}} </a>
+              <a style="color:#002d54;" :href="'#/orga/' + row.item[0] + '?lang=' + storage.lang"> {{row.item[1]}} </a>
             </template>
 
             <template slot="nbLobby" slot-scope="row">
@@ -179,7 +179,7 @@
             </template>
 
             <template slot="lobby" slot-scope="row">
-              <a style="color:#002d54;" :href="'#/orga/' + row.item[0]"> {{row.item[1]}} </a>
+              <a style="color:#002d54;" :href="'#/orga/' + row.item[0] + '?lang=' + storage.lang"> {{row.item[1]}} </a>
             </template>
 
             <template slot="cash" slot-scope="row">

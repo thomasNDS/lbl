@@ -199,6 +199,7 @@
           </div>
         </div>
 
+        <br/>
         <!--  FIELDS of interest -->
         <div v-if="orga.interests != ''" class="row">
           <i class="fa fa-exchange-alt icon-start" aria-hidden="true"></i>
@@ -207,13 +208,12 @@
             <br/>
           <p class="data text-center" style="margin-top:0.5em;">
 
-            
-            <span v-for="interest in interestsAsList" v-bind:key="interest" >
-              <a :href="'#/activity/' + interest">
-                <img :id="'ic-' + interest.slice(0,4) + interest.slice(-2)"
+            <span v-for="interest in interestsAsList" v-bind:key="interest">
+              <a :href="'#/activity/' + interest + '?lang=' + storage.lang">
+                <img :id="'ic-' + interest"
                 :src="storage.ctxDist + '/static/img/interets/' + interest.slice(0,4) + interest.slice(-2) +'.svg'" class="icon-interest"/>
                 </a>
-              <b-tooltip :target="'ic-' + interest.slice(0,4) + interest.slice(-2)">{{trans[121 + parseInt(interest.idLang)]}}</b-tooltip>
+              <b-tooltip :target="'ic-' + interest" delay="700">{{interest}}</b-tooltip>
             </span>
            
           </p>
@@ -408,7 +408,8 @@ export default {
       },
      interestsAsList: function() {
          if (this.orga && this.orga.interests) {
-            return this.orga.interests.split(", ")
+           // console.log(this.orga.interests.split(", ").map(x=> x.trim().split('-')[0]))
+            return this.orga.interests.split(", ").map(x=> x.trim().split('-')[0])
           } else {
             return []
           }
@@ -450,5 +451,9 @@ export default {
 
 <style>
 
+  .icon-interest {
+    padding: 0.3em;
+    margin-bottom: 1em;
+  }
 
 </style>

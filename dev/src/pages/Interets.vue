@@ -34,7 +34,8 @@
                    v-if="view == 1">
 
            <template slot="interet" slot-scope="row">
-           <a style="color:#002d54;" :href="'#/activity/' + row.item.id"> {{row.item.id}} </a>
+            <a style="color:#002d54;" :href="'#/activity/' + row.item.id.split('-')[0] + '?lang=' + storage.lang"> 
+            {{trans[121 + parseInt(row.item.idLang)]}} </a>
           </template>
 
            <template slot="lobbys" slot-scope="row">
@@ -45,7 +46,7 @@
 
         <!-- CARD VIEW -->
         <a v-if="view == 0"
-         :href="'#/activity/' + interet.id" v-for="interet in interets" :key="interet.id">
+         :href="'#/activity/' + interet.id  + '?lang=' + storage.lang" v-for="interet in interets" :key="interet.id">
           <b-card no-body class="card-block" >
         
               <b-card-img :src="storage.ctxDist + '/static/img/interets/' + compactIdFun(interet) +'.svg'" 
