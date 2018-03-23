@@ -24,14 +24,14 @@
               <b-popover target="searchInput" triggers="focus" placement="auto" ref="popover">
                   <template slot="">
 
-                      <span v-if="results.length == 0"> {{ this.popoverDataContent}} </span>
-
-                        <b-list-group v-else id="example-1">
+                        <b-list-group id="example-1" v-if="results && results.length > 0">
                             <b-list-group-item v-for="res in results" style="border-left:none;border-right:none;" :key="res[0]">
-                                <a v-bind:href="'#/orga/' + res[0]">{{ res[1] }}</a>
+                                <a v-bind:href="'#/orga/' + res[0] + '?lang=' + storage.lang">{{ res[1] }}</a>
                             </b-list-group-item>
                         </b-list-group>
-                      
+                        
+                        <span v-else> {{popoverDataContent}} </span>
+
                   </template>
               </b-popover>
 
@@ -120,7 +120,7 @@ export default {
             this.trans = this.storage.trans.g;
             this.lang = this.storage.lang;
 
-            this.popoverDataContent = this.storage.trans[99];
+            this.popoverDataContent = this.trans[99];
 
             bus.$emit("updateLang");
           },

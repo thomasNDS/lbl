@@ -6,13 +6,13 @@
       <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
         <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
           <a v-bind:href="'#/?lang=' + storage.lang" itemscope itemtype="http://schema.org/Thing" itemprop="item">
-            <span itemprop="name">{{trans[53]}} <!--  Accueil --></span>
+            <span itemprop="name">{{gtrans[53]}} <!--  Accueil --></span>
           </a>
           <meta itemprop="position" content="1" />
         </li>
         <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
           <a :href="'#/countries?lang=' + storage.lang" itemscope itemtype="http://schema.org/Thing" itemprop="item">
-             <span itemprop="name">{{trans[45]}} <!-- Countries --></span>
+             <span itemprop="name">{{gtrans[45]}} <!-- Countries --></span>
           </a>
           <meta itemprop="position" content="2" />
         </li>
@@ -23,43 +23,43 @@
       </ol>
 
       <h1>
-        {{country.id }}
+        {{country.id}}
       </h1>
       <hr class="my-4"/>
     </div>
     <div id="block-info">
       <div class="container">
-        <h3 id="Presentation" class="sub-t1">{{trans[11]}} <!-- Presentation --></h3>
+        <h3 id="Presentation" class="sub-t1">{{gtrans[11]}} <!-- Presentation --></h3>
         <div class="row">
           <div class="col-12 col-lg-6">
             <p>
-              <lbl-wikiflag :countryId="country.wikiIdEn" v-if="trans[0]"></lbl-wikiflag>
+              <lbl-wikiflag :countryId="country.wikiIdEn" v-if="ctrans.currentLang"></lbl-wikiflag>
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/50px-Flag_of_Europe.svg.png" style="border: solid 1px #b3b3b3;" v-if="country.isEU"/>
             </p>
 
-            <lbl-wikiinfo :countryId="trans[0]=='en'?country.wikiIdEn:country.wikiIdFr" 
-                            :lang="trans[0]" v-if="trans[0]"></lbl-wikiinfo>
+            <lbl-wikiinfo :countryId="ctrans.currentLang=='en'?country.wikiIdEn:country.wikiIdFr" 
+                            :lang="ctrans.currentLang" v-if="ctrans.currentLang"></lbl-wikiinfo>
                 
             <!-- WIKIPEDIA -->
-            <p class="text-right"><a :href="'https://' + trans[0] + '.wikipedia.org/w/index.php?curid=' + (trans[0]=='en' ?country.wikiIdEn:country.wikiIdFr)" target="_blank">
-              {{trans[59]}} <!-- Show more --> Wikipedia</a> </p>
+            <p class="text-right"><a :href="'https://' + ctrans.currentLang + '.wikipedia.org/w/index.php?curid=' + (ctrans.currentLang=='en' ?country.wikiIdEn:country.wikiIdFr)" target="_blank">
+              {{gtrans[59]}} <!-- Show more --> Wikipedia</a> </p>
 
             <!-- Population -->        
             <p v-if="country.pop != ''"> 
               <i class="fa fa-building icon-start" aria-hidden="true"></i>
-              <span class="info">{{trans[60]}} <!-- Population --> :</span> <span class="data currency-parse">{{country.pop }}</span> 
-              {{trans[64]}} <!-- habitants -->
+              <span class="info">{{gtrans[60]}} <!-- Population --> :</span> <span class="data currency-parse">{{country.pop }}</span> 
+              {{gtrans[64]}} <!-- habitants -->
 
-              <span v-if="country.popDateRef != ''">({{trans[62]}}<!-- in --> {{country.popDateRef}})</span>
+              <span v-if="country.popDateRef != ''">({{gtrans[62]}}<!-- in --> {{country.popDateRef}})</span>
             </p>
             
             <!-- GPD -->
             <p v-if="country.gpd != ''">
               <i class="fa fa-building icon-start" aria-hidden="true"></i>
-              <span class="info">{{trans[61]}} <!-- GPD --> :</span> <span class="data currency-parse">{{country.gpd }}</span> 
-              ({{trans[63]}}<!-- millions de dollards -->
+              <span class="info">{{gtrans[61]}} <!-- GPD --> :</span> <span class="data currency-parse">{{country.gpd }}</span> 
+              ({{gtrans[63]}}<!-- millions de dollards -->
 
-              <span v-if="country.gpdDateRef != ''">({{trans[62]}}<!-- in --> {{country.gpdDateRef}})</span>
+              <span v-if="country.gpdDateRef != ''">({{gtrans[62]}}<!-- in --> {{country.gpdDateRef}})</span>
             </p>
 
           </div> <!-- End col -->
@@ -68,7 +68,7 @@
 
               <!--      MAP           -->
               <!-- ****************** -->    
-              <lbl-wikimap :countryId="country.wikiIdFr" v-if="trans[0]"></lbl-wikimap>
+              <lbl-wikimap :countryId="country.wikiIdFr" v-if="ctrans.currentLang"></lbl-wikimap>
           </div> <!-- End col -->
         </div> <!-- End row -->
       </div><!-- End container -->
@@ -79,13 +79,13 @@
       <!-- ****************** -->
       <!--    Informations    -->
       <!-- ****************** -->
-          <h3 id="Informations" class="sub-t1">{{trans[23]}} <!-- Informations --></h3>
+          <h3 id="Informations" class="sub-t1">{{gtrans[23]}} <!-- Informations --></h3>
           
-          <p><span style="font-size:2em"> {{country.nbLobby}} </span> {{trans[65]}} <!-- lobbys in brux -->.
+          <p><span style="font-size:2em"> {{country.nbLobby}} </span> {{gtrans[65]}} <!-- lobbys in brux -->.
               
               <br/><span v-if="percentBruxel > 0.05">
-                {{trans[67]}}<!-- Soit --> {{Math.round(percentBruxel * 10) / 10}} %
-                {{trans[66]}}<!-- de l'ensemble des lobbys -->.
+                {{gtrans[67]}}<!-- Soit --> {{Math.round(percentBruxel * 10) / 10}} %
+                {{gtrans[66]}}<!-- de l'ensemble des lobbys -->.
               </span>
           </p>
             
@@ -95,12 +95,12 @@
           </div>
           <hr/>
              
-          <p>{{trans[68]}} <!-- Ce qui représente --> <span style="font-size:2em"> <span>{{ country.cost | currency }}</span> € </span> 
-          {{trans[69]}}<!-- de dépenses annuelles -->. 
+          <p>{{gtrans[68]}} <!-- Ce qui représente --> <span style="font-size:2em"> <span>{{ country.cost | currency }}</span> € </span> 
+          {{gtrans[69]}}<!-- de dépenses annuelles -->. 
           <br/>
           <span v-if="percentCash > 0.05">
-            {{trans[67]}} <!-- Soit --> {{Math.round(percentCash * 10) / 10}} % 
-            {{trans[70]}}<!-- des dépenses totales -->.
+            {{gtrans[67]}} <!-- Soit --> {{Math.round(percentCash * 10) / 10}} % 
+            {{gtrans[70]}}<!-- des dépenses totales -->.
           </span>
 
           <p class="lbl-badge"><span class="eme-parse">{{country.rankCost}}</span> / 130</p>
@@ -110,11 +110,11 @@
 
           <hr/>
           <p> <span style="font-size:2em"> {{country.nbLobbyist}} </span> 
-            {{trans[71]}} <!-- personnes impliqués -->.
+            {{gtrans[71]}} <!-- personnes impliqués -->.
             <br/>
             <span v-if="percentPeople > 0.05">
-                {{trans[67]}} <!-- Soit --> {{Math.round(percentPeople * 10) / 10}} % 
-                {{trans[72]}}<!-- de l'ensemble des effectifs -->.
+                {{gtrans[67]}} <!-- Soit --> {{Math.round(percentPeople * 10) / 10}} % 
+                {{gtrans[72]}}<!-- de l'ensemble des effectifs -->.
             </span>
           </p>
           <p class="lbl-badge"><span class="eme-parse">{{country.rankNbLobbyist}}</span> / 130 </p>
@@ -130,14 +130,14 @@
       <!-- ****************** -->
       <!--    Cities          -->
       <!-- ****************** -->
-        <h3 id="" class="sub-t1">{{trans[54]}} <!-- Head office cities --> </h3>
+        <h3 id="" class="sub-t1">{{gtrans[54]}} <!-- Head office cities --> </h3>
 
         <table class="table table-striped">
           <thead>
             <tr>
               <th>#</th>
-              <th>{{trans[55]}} <!-- Cities --></th>
-              <th>{{trans[56]}} <!-- Lobby count --></th>
+              <th>{{gtrans[55]}} <!-- Cities --></th>
+              <th>{{gtrans[56]}} <!-- Lobby count --></th>
             </tr>
           </thead>
           <tbody>
@@ -168,7 +168,7 @@
         </b-button>
       </b-button-group>
         
-      <h3 id="lobbys-status" class="sub-t1">{{trans[57]}} <!--  Lobby Status --></h3>
+      <h3 id="lobbys-status" class="sub-t1">{{gtrans[57]}} <!--  Lobby Status --></h3>
      
      <div class="text-center" id="donut-status" v-if="showStatusGraph">
        <lbl-pie-chart :datachart="orgaStatus" id="donut_single" class="donut-chart"></lbl-pie-chart>
@@ -179,8 +179,8 @@
           <thead>
             <tr>
               <th>#</th>
-              <th>{{trans[58]}} <!-- Status --></th>
-              <th>{{trans[56]}} <!-- Lobby count --></th>
+              <th>{{gtrans[58]}} <!-- Status --></th>
+              <th>{{gtrans[56]}} <!-- Lobby count --></th>
             </tr>
           </thead>
           <tbody>      
@@ -214,14 +214,14 @@
       </b-button-group>
 
         <div id="table-top-budget" v-if="showTopBudget">
-          <h3 id="" class="sub-t1">{{trans[73]}} <!-- Biggest lobbies --> </h3>
+          <h3 id="" class="sub-t1">{{gtrans[73]}} <!-- Biggest lobbies --> </h3>
 
           <table class="table table-striped">
             <thead>
               <tr>
                 <th>#</th>
                 <th>Lobby</th>
-                <th>{{trans[74]}} <!-- Budget --></th>
+                <th>{{gtrans[74]}} <!-- Budget --></th>
               </tr>
             </thead>
             <tbody>
@@ -242,14 +242,14 @@
       <!--  TOP by People involved   -->
       <!-- ************************* -->
       <div id="table-top-people" v-else>
-          <h3 id="" class="sub-t1">{{trans[76]}} <!-- Biggest lobbies in term of people --> </h3>
+          <h3 id="" class="sub-t1">{{gtrans[76]}} <!-- Biggest lobbies in term of people --> </h3>
 
           <table class="table table-striped">
             <thead>
               <tr>
                 <th>#</th>
                 <th>Lobby</th>
-                <th>{{trans[75]}} <!-- Nb people --></th>
+                <th>{{gtrans[75]}} <!-- Nb people --></th>
               </tr>
             </thead>
             <tbody>
@@ -276,9 +276,9 @@
           "@type": "Dataset",
           "name": "{{country.id}}",
           "description": "{{getDescription}}",
-          "keywords": "country,lobby,europe",
-          "variableMeasured" : "count, budgets, costs",
-          "includedInDataCatalog" : "Lobbys by countries"
+          "keywords": "{{ltrans.keywords}},{{country.id}}",
+          "variableMeasured" : "{{ltrans.varMeasured}} {{country.id}}",
+          "includedInDataCatalog" : "{{ltrans.catalog}}"
         }
     </script>
   </div>
@@ -305,7 +305,9 @@ export default {
   data() {
     return {
       msg: "topPage",
-      trans: this.storage.trans && this.storage.trans.g || [],
+      gtrans: this.storage.trans && this.storage.trans.g || [],
+      ctrans: this.storage.trans && this.storage.trans.common || {},
+      ltrans: this.storage.trans && this.storage.trans.country || {},
       country: [],
       showStatusGraph : true,
       showTopBudget : true
@@ -349,7 +351,7 @@ export default {
             var r = {}
             r.id=c[0]
             r.value=c[1]
-            r.t = self.trans[parseInt(r.id) + 80]
+            r.t = self.gtrans[parseInt(r.id) + 80]
             r.idx=cpt++
             return r
          })
@@ -393,7 +395,7 @@ export default {
 
     getDescription: function() {
          if (this.country && this.country.id) {
-            return 'Presentation of europeans lobbys actived in Brussels based in ' + this.country.id
+            return this.ltrans.descr + ' ' + this.country.id
           } else {
             return 'Lobbyland'
           }
@@ -404,7 +406,9 @@ export default {
   /** Init */
   created() {
     bus.$on("updateLang", section => {
-      this.trans = this.storage.trans.g
+      this.gtrans = this.storage.trans.g
+      this.ltrans = this.storage.trans.country
+      this.ctrans = this.storage.trans.common
     });
     this.loadPage(this.$route.params.id)
   },
@@ -414,7 +418,7 @@ export default {
       meta: [
               { name: "Lobbyland", content: "Lobbyland" },
               { name: "description", content: this.getDescription, id: "desc" },
-              { name: "keywords", content: "europe,lobby,country," +   this.country.id},
+              { name: "keywords", content: this.ltrans.keywords + "," +   this.country.id},
               // Twitter
               { name: "twitter:title", content: this.getDescription},
               // with shorthand
