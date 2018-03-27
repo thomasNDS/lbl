@@ -5,5 +5,7 @@
              "The european lobbys register",
              "Europe,lobby,register,transparency"],
     "orga" : {"varMeasured" : "count of involved people, lobbying costs and budget", "lobbyCatalog" : "Lobbys organization","keywords": "europe,lobbys,transparency"},
-    "country" : {"varMeasured" : "count, costs and budget of actived european lobbys based in", "catalog" : "Lobbys by countries", "keywords": "country,lobby,europe", "descr": "Presentation of europeans lobbys actived in Brussels based in"}
+    "country" : {"varMeasured" : "count, costs and budget of actived european lobbys based in", "catalog" : "Lobbys by countries", "keywords": "country,lobby,europe", "descr": "Presentation of europeans lobbys actived in Brussels based in"},
+    "interet" : {"varMeasured" : "count, costs and budget of european lobbys interest in", "catalog" : "Lobbys by interest", "keywords": "lobbys,europe", "descr": "Presentation of europeans lobbys actived in Brussels interested in"}
+
 }

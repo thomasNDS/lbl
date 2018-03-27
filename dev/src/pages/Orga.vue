@@ -352,7 +352,7 @@ export default {
   data() {
     return {
       msg: "topPage",
-      isTruncatedDescr: true,
+      isTruncatedDescr: !this.storage.isBot,
       gtrans: this.storage.trans && this.storage.trans.g || [],
       ltrans: this.storage.trans && this.storage.trans.orga || {},
       ctrans: this.storage.trans && this.storage.trans.common || {},

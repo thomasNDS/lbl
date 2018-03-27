@@ -5,16 +5,16 @@
        <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
         <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
           <a v-bind:href="'#/?lang=' + storage.lang" itemscope itemtype="http://schema.org/Thing" itemprop="item">
-            <span itemprop="name">{{trans[53]}} <!--  Accueil --></span>
+            <span itemprop="name">{{gtrans[53]}} <!--  Accueil --></span>
           </a><meta itemprop="position" content="1" />
         </li>
         <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
           <a :href="'#/activities?lang=' + storage.lang" itemscope itemtype="http://schema.org/Thing" itemprop="item">
-             <span itemprop="name">{{trans[171]}} <!-- Activities --></span>
+             <span itemprop="name">{{gtrans[171]}} <!-- Activities --></span>
           </a><meta itemprop="position" content="2" />
         </li>
         <li class="breadcrumb-item active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-            <span itemprop="name">{{trans[121 + parseInt(interet.idLang)]}}</span>
+            <span itemprop="name">{{gtrans[121 + parseInt(interet.idLang)]}}</span>
           <meta itemprop="position" content="3" />
         </li>
       </ol>
@@ -23,7 +23,7 @@
           <img id="titleImg"
             :src="storage.ctxDist + '/static/img/interets/' + compactId +'.svg'" 
             class="icon-global"/>
-          {{trans[121 + parseInt(interet.idLang)]}}
+          {{gtrans[121 + parseInt(interet.idLang)]}}
       </h1>
       <hr class="my-4"/>
     </div>
@@ -31,14 +31,14 @@
       <div class="container">
               
         <h2 id="Presentation" class="sub-t1">
-              {{trans[172] /* Statistiques */}} <!-- Statistiques -->
+              {{gtrans[172] /* Statistiques */}} <!-- Statistiques -->
         </h2>
         <div class="">
         
           <p>
-          {{Math.round(interet.perNbLobby * 1000)/10}} % {{trans[161] /* des lobbys déclares */}}.<br/>
-          Soit {{interet.nbLobby}} {{trans[162] /* organisations et */}} {{Math.round(interet.nbLobbyist)}}
-           {{trans[71] /* personnes impliques */}}. <br/> 
+          {{Math.round(interet.perNbLobby * 1000)/10}} % {{gtrans[161] /* des lobbys déclares */}}.<br/>
+          Soit {{interet.nbLobby}} {{gtrans[162] /* organisations et */}} {{Math.round(interet.nbLobbyist)}}
+           {{gtrans[71] /* personnes impliques */}}. <br/> 
           </p>
           <p class="lbl-badge"><span class="eme-parse">{{interet.rankNbLobby}}</span>/ 37</p>  
 
@@ -48,13 +48,13 @@
           <hr/>
 
           <p>
-            {{trans[163] /* On estime que */}} {{Math.round(interet.cash) | currency}} € {{trans[164] /* sont dépensés chaque */}}.<br/>
-            {{trans[67] /* Soit */}} {{(interet.cash /interet.nbLobby).toFixed(0) | currency }} € {{trans[165] /* en moyenne par organisation */}}
-             {{(interet.cash /511800000).toFixed(2) }} € {{trans[166] /* by */}} <span id="citizen" class="lbl-has-tooltip">{{trans[167] /* citoyen européen */}}</span>.
+            {{gtrans[163] /* On estime que */}} {{Math.round(interet.cash) | currency}} € {{gtrans[164] /* sont dépensés chaque */}}.<br/>
+            {{gtrans[67] /* Soit */}} {{(interet.cash /interet.nbLobby).toFixed(0) | currency }} € {{gtrans[165] /* en moyenne par organisation */}}
+             {{(interet.cash /511800000).toFixed(2) }} € {{gtrans[166] /* by */}} <span id="citizen" class="lbl-has-tooltip">{{gtrans[167] /* citoyen européen */}}</span>.
             <b-tooltip target="citizen" delay="500" placement="bottom" triggers="hover click"> 
-             {{trans[168] /* Sur la base de */}} 511.8 {{trans[169] /* millions de citoyens */}}. 
+             {{gtrans[168] /* Sur la base de */}} 511.8 {{gtrans[169] /* millions de citoyens */}}. 
                 <b-link class="text-secondary" href="http://ec.europa.eu/eurostat/tgm/table.do?tab=table&language=en&pcode=tps00001&tableSelection=1&footnotes=yes&labeling=labels&plugin=1">
-                 {{trans[170] /* Données Eurostat 2017 */}}
+                 {{gtrans[170] /* Données Eurostat 2017 */}}
                 </b-link>
                 </b-tooltip>
               <br/>
@@ -75,9 +75,9 @@
         <!--    Countries       -->
         <!-- ****************** -->
 
-      <h2 id="Countries" class="sub-t1">{{trans[45] /* Countries */}}</h2>
+      <h2 id="Countries" class="sub-t1">{{gtrans[45] /* Countries */}}</h2>
 
-        <lbl-map-activities :selected="interet.topCountriesNb" :title="trans[121 + parseInt(interet.idLang)]"></lbl-map-activities>
+        <lbl-map-activities :selected="interet.topCountriesNb" :title="gtrans[121 + parseInt(interet.idLang)]"></lbl-map-activities>
 
         <hr/><br/><br/>
 
@@ -96,7 +96,7 @@
         <b-table  :items="interet.topCountriesNb"
                   :striped="true"
                   v-if="viewCountry == 0"
-                  :fields="[{key:'index', label: 'index'}, {key:'country', label: this.trans[5]}, {key:'nbLobby', label:  this.trans[56]}]">
+                  :fields="[{key:'index', label: 'index'}, {key:'country', label: this.gtrans[5]}, {key:'nbLobby', label:  this.gtrans[56]}]">
 
           <template slot="index" slot-scope="data">
             {{data.index + 1}}
@@ -115,7 +115,7 @@
                 <b-table  :items="interet.topCountriesCash"
                   :striped="true"
                   v-if="viewCountry == 1"
-                  :fields="[{key:'index', label: 'index'}, {key:'country', label: this.trans[5]}, {key:'cash', label: this.trans[74]}]">
+                  :fields="[{key:'index', label: 'index'}, {key:'country', label: this.gtrans[5]}, {key:'cash', label: this.gtrans[74]}]">
 
           <template slot="index" slot-scope="data">
             {{data.index + 1}}
@@ -153,7 +153,7 @@
           <b-table  :items="interet.topLobbyPeople"
             :striped="true"
             v-if="viewOrga == 0"
-            :fields="[{key:'index', label: 'index'}, {key:'lobby', label: this.trans[1]}, {key:'nbLobby', label: this.trans[56]}]">
+            :fields="[{key:'index', label: 'index'}, {key:'lobby', label: this.gtrans[1]}, {key:'nbLobby', label: this.gtrans[56]}]">
 
             <template slot="index" slot-scope="data">
               {{data.index + 1}}
@@ -172,7 +172,7 @@
           <b-table  :items="interet.topLobbyCash"
                     :striped="true"
                     v-if="viewOrga == 1"
-                    :fields="[{key:'index', label: 'index'}, {key:'lobby', label: this.trans[1]}, {key:'cash', label: this.trans[74]}]">
+                    :fields="[{key:'index', label: 'index'}, {key:'lobby', label: this.gtrans[1]}, {key:'cash', label: this.gtrans[74]}]">
 
           <template slot="index" slot-scope="data">
               {{data.index + 1}}
@@ -192,7 +192,7 @@
         <div class="part-split">
           <div class="container">
 
-             <h2 id="AllInterets" :storage="storage" class="sub-t1">{{trans[173] /* Autres interets */}}</h2>
+             <h2 id="AllInterets" :storage="storage" class="sub-t1">{{gtrans[173] /* Autres interets */}}</h2>
 
             <all-interets :storage="storage"></all-interets>
             <br/>
@@ -200,7 +200,7 @@
         </div>  <!-- part-split -->
 
        <p class="text-center" style="color: ##6b6b6b;" v-if="interet.lastUpdate && interet.lastUpdate !== ''">
-          {{trans[38]}} <!--  LastUpdate -->
+          {{gtrans[38]}} <!--  LastUpdate -->
             <span class="data date-parse">
               {{ interet.lastUpdate | date }}
             </span>
@@ -211,12 +211,12 @@
         {
           "@context": "http://schema.org",
           "@type": "Dataset",
-          "name": "{{trans[121 + parseInt(interet.idLang)]}}",
+          "name": "{{gtrans[121 + parseInt(interet.idLang)]}}",
           "description": "{{getDescription}}",
-          "keywords": "interest,lobby,europe",
-          "variableMeasured" : "count, budgets, costs",
+          "keywords": "{{ltrans.keywords}},{{gtrans[121 + parseInt(interet.idLang)]}}",
+          "variableMeasured" : "{{ltrans.varMeasured}} {{gtrans[121 + parseInt(interet.idLang)]}}",
           "identifier" : "{{interet.id}}",
-          "includedInDataCatalog" : "Lobbys interests",
+          "includedInDataCatalog" : "{{ltrans.catalog}}",
           "temporalCoverage" : "{{interet.lastUpdate | dateYMD}}"
         }
     </script>
@@ -239,7 +239,9 @@ export default {
   },
   data() {
     return {
-      trans: this.storage.trans && this.storage.trans.g || [],
+      gtrans: this.storage.trans && this.storage.trans.g || [],
+      ltrans: this.storage.trans && this.storage.trans.interet || [],
+      ctrans: this.storage.trans && this.storage.trans.common || [],
       interet: [],
       interets: [],
       viewCountry : 0, // 0 : nb, 1 : cash
@@ -307,8 +309,8 @@ export default {
        },
 
     getDescription: function() {
-         if (this.interet && this.interet.id) {
-            return 'All about ' + this.interet.id + ' activities of european lobbys'
+         if (this.ltrans && this.ltrans.descr) {
+            return this.ltrans.descr
           } else {
             return 'Lobbyland'
           }
@@ -319,7 +321,9 @@ export default {
   /** Init */
   created() {
     bus.$on("updateLang", section => {
-      this.trans = this.storage.trans.g
+      this.gtrans = this.storage.trans.g
+      this.ltrans = this.storage.trans.interet
+      this.ctrans = this.storage.trans.common
     });
     this.loadPage(this.$route.params.id)
 

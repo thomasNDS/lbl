@@ -67,6 +67,7 @@ store.url = 'https://script.google.com/macros/s/AKfycbxqd3bFwVpmY1hGrq0HNheCGIwi
 store.cacheUrl = 'https://lobbyland.eu/data/'
 store.lang = "EN"
 store.ctxDist = ctxDist
+store.isBot = /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent)
 
 const param = function(route) {
 
