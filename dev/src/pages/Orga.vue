@@ -76,13 +76,13 @@
               </p>
               <p>
                  <span v-if="orga.membersCount < 100">
-                   <i class="fa fa-male fa-2x" aria-hidden="true" v-for="n in orga.membersCount" :key="n"></i>
+                   <i class="fa fa-male fa-2x icon-people" aria-hidden="true" v-for="n in orga.membersCount" :key="n"></i>
                  </span>
                  <span v-if="orga.membersCount > 99 && orga.membersCount < 399">
-                  <i class="fa fa-male" aria-hidden="true" v-for="n in orga.membersCount" :key="n"></i>
+                  <i class="fa fa-male icon-people" aria-hidden="true" v-for="n in orga.membersCount" :key="n"></i>
                 </span>
                 <span v-if="orga.membersCount > 400">
-                <i class="fa fa-male" aria-hidden="true" v-for="n in 400" :key="n"></i>
+                <i class="fa fa-male icon-people" aria-hidden="true" v-for="n in 400" :key="n"></i>
                 </span>
                 <span v-if="orga.membersCount > 399"> ... </span>
               </p>
@@ -468,4 +468,9 @@ export default {
     margin-bottom: 1em;
   }
 
+  .icon-people {
+    margin: 1px;
+    margin-bottom: 2px;
+  }
+  
 </style>
