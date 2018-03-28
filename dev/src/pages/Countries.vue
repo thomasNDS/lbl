@@ -64,7 +64,8 @@
         <b-table  :items="filteredCountries"
                   :striped="true"
                   :fields="fields"
-                   v-if="view == 1">
+                   v-if="view == 1"
+                   responsive>
 
            <template slot="country" slot-scope="row">
            <a style="color:#002d54;" :href="'#/country/' + row.item.id + '?lang=' + storage.lang"> {{row.item.id}} </a>
@@ -73,7 +74,7 @@
             {{row.item.nborg}}
           </template>
           <template slot="budget" slot-scope="row">
-            <span v-if="row.item.budget !== '#N/A' && row.item.budget > 0">{{row.item.budget | currency}} €</span>
+            <span v-if="row.item.budget !== '#N/A' && row.item.budget > 0">{{row.item.budget | currency}}€</span>
             <span v-else style="font-size:0.75em;">N/A</span>
           </template>
           <template slot="lobbyists" slot-scope="row">

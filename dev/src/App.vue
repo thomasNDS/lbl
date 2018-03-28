@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-     <lbl-header v-bind:storage="storage"></lbl-header>
+      <lbl-header v-bind:storage="storage"></lbl-header>
 
-  <router-view id="root"></router-view>
-
-  <lbl-footer v-bind:storage="storage"></lbl-footer>
+      <router-view id="root"></router-view>
+      
+      <lbl-footer v-bind:storage="storage"></lbl-footer>
   </div>
 </template>
 

@@ -4,5 +4,8 @@
     "home" : ["Lobbyland est un registre des organisation lobbyistes européenne basé sur les données du registre de transparence européen publié par la commision européenne. Lobbyland illustre et agrège ces données pour faciliter son accès au citoyen.",
               "Le registre des lobbys européens",
               "Europe,lobby,registre,transparence"],
-    "orga" : {"varMeasured" : "coût et budgets de lobbying, personnel impliqué", "lobbyCatalog" : "Organisations lobbyistes","keywords": "europe,lobbys,transparence"}
+    "orga" : {"varMeasured" : "coût et budgets de lobbying, personnel impliqué", "lobbyCatalog" : "Organisations lobbyistes","keywords": "europe,lobbys,transparence"},
+    "country" : {"varMeasured" : "coût et budget des lobbys européens basés en ", "catalog" : "Lobbys selon le pays du siège social", "keywords": "pays,lobbys,europe", "descr": "Presentation des lobbys européens actifs à Bruxelles dont le siège social est basés en "},
+    "interet" : {"varMeasured" : "coût et budget des lobbys européens intéréssés par", "catalog" : "Lobbys selon leurs domaines d'intérêts", "keywords": "lobbys,europe", "descr": "Presentation des lobbys européens actifs à Bruxelles intéréssé par "}
+
 }

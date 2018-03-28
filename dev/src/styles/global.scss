@@ -73,9 +73,10 @@ body.app {
     max-height: 350px;
 }
 
-.bloc-map {
+/*.bloc-map {
   width: 480px;
-}
+}*/
+
 .icon-start {
     min-width: 1.25em;
     opacity: 0.5;
@@ -88,7 +89,6 @@ body.app {
 .part-split {
     background: white;
     border: solid 1px #e2e0e0;
-    padding: 1em;
     padding-top: 2.5em;
     margin-bottom: 2.5em;
     margin-top: 1em;
@@ -184,4 +184,12 @@ a.text-def:hover {
 }
 a.text-pink:hover {
   color: #F48FB1 !important;
+}
+
+/* animations */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0.5;
 }

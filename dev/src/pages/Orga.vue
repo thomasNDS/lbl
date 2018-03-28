@@ -93,7 +93,7 @@
             <!-- ************ -->
             <!--     MAP      -->
             <!-- ************ -->
-            <lbl-map :selected="orga.country"></lbl-map>
+            <lbl-map :selected="orga.country" :clientSize="storage.clientSize"></lbl-map>
           </div>
           <!-- End col -->
 
@@ -157,11 +157,14 @@
                     <br/>
                     <span class="range"> ({{gtrans[9]}}) <!--  estimation as a range --></span>
                   </div>
-             </div> <!-- End col -->
+            </div> <!-- End col -->
 
-              <hr class="col-12" />
+            
           </div>
           <!-- End row -->
+          <div class="row">
+            <hr class="col-10" />
+          </div>
         </div>
         <!-- End container -->
       </div>
@@ -180,7 +183,7 @@
           <i class="fa fa-tag icon-start" aria-hidden="true"></i>
           <span class="info">
             {{gtrans[12]}} <!--  Goals --> :</span>
-
+ <transition name="fade">
           <div v-if="orga.goal && orga.goal.length > 1000">
 
             <div class="data content" v-bind:class="{ hideContent: isTruncatedDescr && orga.goal.length > 500 }" v-html="orga.goal">
@@ -194,9 +197,11 @@
               </a>
             </div>
           </div>
+          
           <div class="data" v-else>
                {{orga.goal}}
           </div>
+ </transition>
         </div>
 
         <br/>

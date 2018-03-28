@@ -68,7 +68,7 @@ store.cacheUrl = 'https://lobbyland.eu/data/'
 store.lang = "EN"
 store.ctxDist = ctxDist
 store.isBot = /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent)
-
+store.clientSize = {"x" : document.body.clientWidth, "y" :  document.body.clientHeight}
 const param = function(route) {
 
   if (["en", "fr","EN", "FR"].indexOf(route.query.lang) >= 0) {
@@ -91,7 +91,10 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  routes // short for `routes: routes`
+  routes, // short for `routes: routes`
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 115 }
+  }
 })
 
 const app = new Vue({

@@ -1,5 +1,5 @@
 <template>
-  <div id="lbl-map" class="bloc-map" style="height:330px; margin:auto;">
+  <div id="lbl-map" class="bloc-map" :style="{width: mapWidth}">
   </div>
 </template>
 
@@ -11,7 +11,8 @@ import topojson from "topojson";
 
 export default {
   name: "lbl-map",
-  props: ["selected"],
+  props: ["selected",
+          "clientSize"],
 
   data() {
     return {
@@ -24,6 +25,11 @@ export default {
   },
   mounted() {
     this.loadEuropeMap(this.selected)
+  },
+  computed: {
+      mapWidth: function() {
+         return this.clientSize.x > 500 && "500px" || this.clientSize.x - 25 + 'px'
+      },
   },
   methods: {
     /** */
@@ -103,4 +109,7 @@ export default {
 
 <style lang="scss" scoped>
 
+#lbl-map {
+  height:330px; margin:auto;
+}
 </style>

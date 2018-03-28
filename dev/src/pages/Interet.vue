@@ -77,7 +77,8 @@
 
       <h2 id="Countries" class="sub-t1">{{gtrans[45] /* Countries */}}</h2>
 
-        <lbl-map-activities :selected="interet.topCountriesNb" :title="gtrans[121 + parseInt(interet.idLang)]"></lbl-map-activities>
+        <lbl-map-activities :selected="interet.topCountriesNb" :title="gtrans[121 + parseInt(interet.idLang)]"
+        :clientSize="storage.clientSize"></lbl-map-activities>
 
         <hr/><br/><br/>
 

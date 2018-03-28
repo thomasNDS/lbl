@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div id="lbl-map-activities" class="bloc-map" style="min-height:400px; min-width:600px; margin:auto;">
+  <div id="lbl-map-activities" class="bloc-map" :style="{width: mapWidth}">
   </div>
   <div class="text-center">
     <h4>Most active countries in {{title}}</h4>
@@ -27,7 +27,9 @@ import topojson from "topojson";
 
 export default {
   name: "lbl-map-activities",
-  props: ["selected", "title"],
+  props: ["selected", 
+          "title",
+          "clientSize"],
 
   data() {
     return {
@@ -50,6 +52,10 @@ export default {
       sortedCountries: function()  {
         var c=0;
         return this.selected.map(x => {x.cpt=c++; return x})
+      },
+      /** */
+      mapWidth: function() {
+         return this.clientSize.x > 800 && "950px" || this.clientSize.x - 35 + 'px'
       }
   },
   methods: {
@@ -155,6 +161,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
+
+  #lbl-map-activities{
+    min-height:400px;
+    margin:auto;
+  }
 
 </style>
