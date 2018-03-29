@@ -3,19 +3,28 @@
   <div id="lbl-map-activities" class="bloc-map" :style="{width: mapWidth}">
   </div>
   <div class="text-center">
-    <h4>Most active countries in {{title}}</h4>
+    <h4>{{ctrans.mostActives}}<!-- Most actives countries in--></h4>
 
     <b-button-group class="text-center">
       <b-button v-on:click="zoomMap = 'eu'" :variant="zoomMap == 'eu' && 'dark' || 'default'">
         Europe
       </b-button>
       <b-button v-on:click="zoomMap = 'world'" :variant="zoomMap === 'world' && 'dark' || 'default'">
-        World
+        {{ctrans.world}}
       </b-button>
     </b-button-group>
     <br/>
     <br/>
   </div>
+
+<div class="progress">
+  <div class="progress-bar lbl-progress-block" role="progressbar" style="background: #BBB;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ctrans.fewActivity}}</div>
+  <div class="progress-bar lbl-progress-block" role="progressbar" style="background: rgb(110, 90, 90);" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar lbl-progress-block" role="progressbar" style="background: rgb(170, 90, 90);" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar lbl-progress-block" role="progressbar" style="background: rgb(205, 90, 90);" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar lbl-progress-block" role="progressbar" style="background: rgb(255, 90, 90);" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ctrans.highActivity}}</div>
+</div>
+
 </div>
 </template>
 
@@ -29,7 +38,8 @@ export default {
   name: "lbl-map-activities",
   props: ["selected", 
           "title",
-          "clientSize"],
+          "clientSize",
+          "ctrans"],
 
   data() {
     return {
@@ -37,19 +47,20 @@ export default {
     };
   },
     watch: {
-    'selected': function (value) {
-      this.loadEuropeMap(value)
+    'selected': function (evt) {
+      this.loadMap(evt)
     },
-    'zoomMap': function (value) {
-      this.loadEuropeMap(value)
+    'zoomMap': function (evt) {
+      this.loadMap(evt)
     }
   },
   mounted() {
-    this.loadEuropeMap(this.selected)
+    this.loadMap(this.selected)
   },
   computed: {
       /** */
       sortedCountries: function()  {
+        if (!this.selected) return "load"
         var c=0;
         return this.selected.map(x => {x.cpt=c++; return x})
       },
@@ -65,18 +76,18 @@ export default {
     },
     /** */
     getColor: function(country) {
-      var c=0;
+      var c=0, res = "na"
       var countryFiltered = this.sortedCountries.filter(x => x[0] === country)[0]
 
       if (countryFiltered) {
-        return "top" + (countryFiltered.cpt + 1)
+        res = "top" + (countryFiltered.cpt + 1)
       }
-
-      return "na"
+      // console.log("country =" + country + "- " + res)
+      return res
     },
 
     /** */
-    loadEuropeMap: function(selected) {
+    loadMap: function(selected) {
        
       if (selected) {
        //console.log(selected)
@@ -102,53 +113,53 @@ export default {
           },
           fills: {
             defaultFill: "#BBB",
-            top1: "rgb(255, 10, 10)",
-            top2: "rgb(240, 10, 10)",
-            top3: "rgb(225, 10, 10)",
-            top4: "rgb(210, 10, 10)",
-            top5: "rgb(195, 10, 10)",
-            top6: "rgb(170, 10, 10)",
-            top8: "rgb(150, 10, 10)",
-            top9: "rgb(130, 10, 10)",
-            top10:"rgb(90, 10, 10)",
+            top1: "rgb(255, 90, 90)",
+            top2: "rgb(240, 90, 90)",
+            top3: "rgb(225, 90, 90)",
+            top4: "rgb(210, 90, 90)",
+            top5: "rgb(195, 90, 90)",
+            top6: "rgb(170, 90, 90)",
+            top8: "rgb(150, 90, 90)",
+            top9: "rgb(130, 90, 90)",
+            top10:"rgb(110, 90, 90)",
             ras: "rgb(0, 10, 10)"
           },
           data: {
-            BEL: { fillKey: this.getColor('Belgium') }, //4
+            BEL: { fillKey: this.getColor('belgium') }, //4
 
-            PRT: { fillKey: this.getColor("Portugal") }, //21
-            ESP: { fillKey: this.getColor("Spain") }, //11
-            FRA: { fillKey: this.getColor("France") }, //1
-            ITA: { fillKey: this.getColor("Italia") }, //24
+            PRT: { fillKey: this.getColor("portugal") }, //21
+            ESP: { fillKey: this.getColor("dpain") }, //11
+            FRA: { fillKey: this.getColor("france") }, //1
+            ITA: { fillKey: this.getColor("italia") }, //24
             
-            AUT: { fillKey: this.getColor("Austria") }, //2
-            DEU: { fillKey: this.getColor("Germany") }, //3
-            DNK: { fillKey: this.getColor("Denmark") }, //8
-            CYP: { fillKey: this.getColor("Cyprus") }, //6
-            CZE: { fillKey: this.getColor("Czech Republic") }, //7
-            IRL: { fillKey: this.getColor("Ireland") }, //9
-            EST: { fillKey: this.getColor("Estonia") }, //10
-            HRV: { fillKey: this.getColor("Croatia") }, //13
-            HUN: { fillKey: this.getColor("Hungary") }, //14
-            LVA: { fillKey: this.getColor("Latvia") }, //15
-            LTU: { fillKey: this.getColor("Lithuania") }, //16
-            SVK: { fillKey: this.getColor("Slovakia") }, //17
-            LUX: { fillKey: this.getColor("Luxembourg") }, //18
-            MLT: { fillKey: this.getColor("Malta") }, //19
-            POL: { fillKey: this.getColor("Poland") }, //20
-            SVN: { fillKey: this.getColor("Slovenia") }, //23
-            NLD: { fillKey: this.getColor("Netherlands") }, //25
-            FIN: { fillKey: this.getColor("Finland") }, //26
-            SWE: { fillKey: this.getColor("Sweden") }, //27
-            ROU: { fillKey: this.getColor("Romania") }, //22
-            GRC: { fillKey: this.getColor("Greece") }, //12
-            BGR: { fillKey: this.getColor("Bulgaria") }, //5
+            AUT: { fillKey: this.getColor("austria") }, //2
+            DEU: { fillKey: this.getColor("germany") }, //3
+            DNK: { fillKey: this.getColor("denmark") }, //8
+            CYP: { fillKey: this.getColor("cyprus") }, //6
+            CZE: { fillKey: this.getColor("czech Republic") }, //7
+            IRL: { fillKey: this.getColor("ireland") }, //9
+            EST: { fillKey: this.getColor("estonia") }, //10
+            HRV: { fillKey: this.getColor("croatia") }, //13
+            HUN: { fillKey: this.getColor("hungary") }, //14
+            LVA: { fillKey: this.getColor("latvia") }, //15
+            LTU: { fillKey: this.getColor("lithuania") }, //16
+            SVK: { fillKey: this.getColor("slovakia") }, //17
+            LUX: { fillKey: this.getColor("luxembourg") }, //18
+            MLT: { fillKey: this.getColor("malta") }, //19
+            POL: { fillKey: this.getColor("poland") }, //20
+            SVN: { fillKey: this.getColor("slovenia") }, //23
+            NLD: { fillKey: this.getColor("netherlands") }, //25
+            FIN: { fillKey: this.getColor("finland") }, //26
+            SWE: { fillKey: this.getColor("sweden") }, //27
+            ROU: { fillKey: this.getColor("romania") }, //22
+            GRC: { fillKey: this.getColor("greece") }, //12
+            BGR: { fillKey: this.getColor("bulgaria") }, //5
 
-            GBR: { fillKey: this.getColor("United Kingdom")}, //27
+            GBR: { fillKey: this.getColor("united kingdom")}, //27
   
-            CHE: { fillKey: this.getColor("Switzerland")}, //27
-            CAN: { fillKey: this.getColor("Canada") }, //24
-            USA: { fillKey: this.getColor("United states") } //24
+            CHE: { fillKey: this.getColor("switzerland")}, //27
+            CAN: { fillKey: this.getColor("canada") }, //24
+            USA: { fillKey: this.getColor("united states") } //24
           },
           geographyConfig: {
             highlightFillColor: "#C51162",
@@ -167,5 +178,7 @@ export default {
     min-height:400px;
     margin:auto;
   }
-
+  .lbl-progress-block {
+    width: 25%;
+  }
 </style>
