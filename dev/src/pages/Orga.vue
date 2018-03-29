@@ -6,7 +6,7 @@
       <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
         <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
           <a v-bind:href="'#/?lang=' + storage.lang" itemscope itemtype="http://schema.org/Thing" itemprop="item">
-            <span  itemprop="name">{{gtrans[53]}} <!--  Accueil --></span>
+            <span  itemprop="name">{{ctrans.home}}</span>
           </a> <meta itemprop="position" content="1" />
         </li>
         <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
@@ -321,8 +321,6 @@
 
     <lbl-error-modal ref="errorModal" :storage="storage" :id="$route.params.id"/>
 
-    <lbl-report-bug ref="reportError" :storage="storage" :id="$route.params.id"/>
-
 <script type="application/ld+json">
     {
       "@context": "http://schema.org",
@@ -344,15 +342,13 @@
 import bus from "../components/EventBus.js";
 import Map from "../components/Map.vue";
 import ErrorModal from "../components/ErrorModal.vue";
-import ReportBug from "../components/ReportBug.vue";
 
 export default {
   name: "app",
   props: ["storage", "lang"],
   components: {
     "lbl-map": Map,
-    "lbl-error-modal": ErrorModal,
-    "lbl-report-bug": ReportBug
+    "lbl-error-modal": ErrorModal
   },
   data() {
     return {
@@ -472,5 +468,5 @@ export default {
     margin: 1px;
     margin-bottom: 2px;
   }
-  
+
 </style>

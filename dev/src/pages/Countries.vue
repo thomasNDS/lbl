@@ -2,7 +2,7 @@
   <div>
 
       <div class="container text-center">
-        <h1 class="display-4">{{trans[45]}} <!-- Countries --></h1>
+        <h1 class="display-4">{{gtrans[45]}} <!-- Countries --></h1>
 
         <!-- Button bar -->
         <b-row align-h="end">
@@ -27,28 +27,28 @@
     
                   <b-button id="lobbys" :variant="sort == 1 && 'link' || 'default'" v-on:click="sort = 1">lobbys</b-button>
 
-                  <b-button id="cash" :variant="sort == 0 && 'link' || 'default'" v-on:click="sort = 0"><!-- cash -->{{trans[74]}}</b-button>       
+                  <b-button id="cash" :variant="sort == 0 && 'link' || 'default'" v-on:click="sort = 0"><!-- cash -->{{gtrans[74]}}</b-button>       
 
-                  <b-button id="lobbystes" :variant="sort == 2 && 'link' || 'default'" v-on:click="sort = 2"><!-- lobbystes -->{{trans[109]}}</b-button>
+                  <b-button id="lobbystes" :variant="sort == 2 && 'link' || 'default'" v-on:click="sort = 2"><!-- lobbystes -->{{gtrans[109]}}</b-button>
               </b-button-group>
-              <b-tooltip target="cash" delay="1000">{{trans[113]}}</b-tooltip>
-              <b-tooltip target="lobbys" delay="1000">{{trans[114]}}</b-tooltip>
-              <b-tooltip  target="lobbystes" delay="1000">{{trans[115]}}</b-tooltip>
+              <b-tooltip target="cash" delay="1000">{{gtrans[113]}}</b-tooltip>
+              <b-tooltip target="lobbys" delay="1000">{{gtrans[114]}}</b-tooltip>
+              <b-tooltip  target="lobbystes" delay="1000">{{gtrans[115]}}</b-tooltip>
             </b-col>
 
             <!-- FILTERS -->
             <b-col sm style="text-align: end; padding:0.2em">
               <b-button-group style="margin-right:2.5em;">
                   <i class="fa fa-filter  i-sort" aria-hidden="true"></i> 
-                  <b-button :variant="filterEu == 2 && 'link' || 'default'"  v-on:click="filterEu = 2"><!-- All -->{{trans[110]}}</b-button>
+                  <b-button :variant="filterEu == 2 && 'link' || 'default'"  v-on:click="filterEu = 2"><!-- All -->{{gtrans[110]}}</b-button>
                   
-                  <b-button id="eu" :variant="filterEu == 1 && 'link' || 'default'" v-on:click="filterEu = 1"><!-- EU -->{{trans[111]}}</b-button>
+                  <b-button id="eu" :variant="filterEu == 1 && 'link' || 'default'" v-on:click="filterEu = 1"><!-- EU -->{{gtrans[111]}}</b-button>
 
-                  <b-button id="noneu" :variant="filterEu == 0 && 'link' || 'default'" v-on:click="filterEu = 0"><!-- non EU -->{{trans[112]}}</b-button>
+                  <b-button id="noneu" :variant="filterEu == 0 && 'link' || 'default'" v-on:click="filterEu = 0"><!-- non EU -->{{gtrans[112]}}</b-button>
                   
               </b-button-group>
-              <b-tooltip  target="eu" delay="1000">{{trans[116]}}</b-tooltip>
-              <b-tooltip  target="noneu" delay="1000">{{trans[117]}}</b-tooltip>
+              <b-tooltip  target="eu" delay="1000">{{gtrans[116]}}</b-tooltip>
+              <b-tooltip  target="noneu" delay="1000">{{gtrans[117]}}</b-tooltip>
             </b-col>
         </b-row>
       </div>
@@ -106,7 +106,7 @@
                   <br/></span>
 
                   <i class="fa fa-male icon-start" aria-hidden="true"></i>
-                  <span>{{country.nblobbys}} {{trans[109]}}</span>
+                  <span>{{country.nblobbys}} {{gtrans[109]}}</span>
               </b-card-footer>
           </b-card>
         </a>
@@ -126,7 +126,7 @@ export default {
     return {
       msg: "topPage",
       countries: [],
-      trans: this.storage.trans && this.storage.trans.g || [],
+      gtrans: this.storage.trans && this.storage.trans.g || [],
       filterEu: 2, // 2:all, 0: non Eu, 1: only Eu
       sort: 1, // 0:cash, 1: lobbys, 2: lobbyist
       view: 0, // 0: card, 1: list
@@ -134,7 +134,7 @@ export default {
   },
   created() {
     bus.$on("updateLang", section => {
-      this.trans = this.storage.trans.g
+      this.gtrans = this.storage.trans.g
     });
     this.loadPage();
   },
@@ -179,10 +179,10 @@ export default {
       return res
     },
     fields : function() {
-      var res =  [{key:'country', label: this.trans[5]}, 
-                  {key:'budget', label: this.trans[74]}, 
+      var res =  [{key:'country', label: this.gtrans[5]}, 
+                  {key:'budget', label: this.gtrans[74]}, 
                   {key:'lobbys', label: 'Lobbys'},
-                  {key:'lobbyists', label: this.trans[109]},
+                  {key:'lobbyists', label: this.gtrans[109]},
                 ]
 
       if (this.filterEu == 2) {

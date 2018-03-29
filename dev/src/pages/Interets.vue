@@ -2,7 +2,7 @@
   <div>
 
       <div class="container text-center">
-        <h1 class="display-4">{{trans[35]}} <!-- Interets --></h1>
+        <h1 class="display-4">{{gtrans[35]}} <!-- Interets --></h1>
 
         <!-- Button bar -->
         <b-row align-h="end">
@@ -35,7 +35,7 @@
 
            <template slot="interet" slot-scope="row">
             <a style="color:#002d54;" :href="'#/activity/' + row.item.id.split('-')[0] + '?lang=' + storage.lang"> 
-            {{trans[121 + parseInt(row.item.idLang)]}} </a>
+            {{gtrans[121 + parseInt(row.item.idLang)]}} </a>
           </template>
 
            <template slot="lobbys" slot-scope="row">
@@ -50,11 +50,11 @@
           <b-card no-body class="card-block" >
         
               <b-card-img :src="storage.ctxDist + '/static/img/interets/' + compactIdFun(interet) +'.svg'" 
-                          :alt="trans[121 + parseInt(interet.idLang)] + ' icon'" class="icon-card"
+                          :alt="gtrans[121 + parseInt(interet.idLang)] + ' icon'" class="icon-card"
                           top></b-card-img>
 
               <h5 class="title-card"> 
-                {{trans[121 + parseInt(interet.idLang)]}}
+                {{gtrans[121 + parseInt(interet.idLang)]}}
               </h5>
 
               <b-card-footer>
@@ -80,13 +80,13 @@ export default {
   data() {
     return {
       interets: [],
-      trans: this.storage.trans && this.storage.trans.g || [],
+      gtrans: this.storage.trans && this.storage.trans.g || [],
       view: 0, // 0: card, 1: list
     };
   },
   created() {
     bus.$on("updateLang", section => {
-      this.trans = this.storage.trans.g;
+      this.gtrans = this.storage.trans.g;
     });
     this.loadPage();
   },
@@ -119,7 +119,7 @@ export default {
       return "Differents interests of actives europeans lobbys in Brussels.";
     },
     fields : function() {
-      var res =  [{key:'interet', label: this.trans[172]},
+      var res =  [{key:'interet', label: this.gtrans[172]},
                   {key:'lobbys', label: 'lobbys'}]
 
       if (this.filterEu == 2) {

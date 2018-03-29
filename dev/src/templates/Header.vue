@@ -17,7 +17,7 @@
 
               <!-- SEARCH DROPDOWN -->
               <b-nav-form>
-                <b-form-input id="searchInput" v-model="searchedText" :placeholder="trans[24]" v-on:input="changeSearch" right>
+                <b-form-input id="searchInput" v-model="searchedText" :placeholder="gtrans[24]" v-on:input="changeSearch" right>
                 </b-form-input>
               </b-nav-form>
 
@@ -63,7 +63,7 @@ export default {
   name: "lbl-header",
   data() {
     return {
-      trans: this.storage.trans && this.storage.trans.g || [],
+      gtrans: this.storage.trans && this.storage.trans.g || [],
       lang: this.storage.lang,
       results: [],
       searchedText: "",
@@ -79,10 +79,10 @@ export default {
     /** */
     changeSearch: function(event) {
       if (this.searchedText.length > 2) {
-        this.popoverDataContent = this.trans[100]; // "Loading ..."
+        this.popoverDataContent = this.gtrans[100]; // "Loading ..."
         this.searchOrga(this.searchedText);
       } else {
-        this.popoverDataContent = this.trans[99]; // "Search an organization"
+        this.popoverDataContent = this.gtrans[99]; // "Search an organization"
       }
     },
 
@@ -92,12 +92,12 @@ export default {
         response => {
           this.results = response.body.data;
           if (this.results.length == 0) {
-            this.popoverDataContent = this.trans[102]; //"No results found"
+            this.popoverDataContent = this.gtrans[102]; //"No results found"
           }
         },
         response => {
           console.error("error " + status);
-          this.popoverDataContent = this.trans[101]; // "La recherche ne fonctionne plus"
+          this.popoverDataContent = this.gtrans[101]; // "La recherche ne fonctionne plus"
         }
       );
     },
@@ -117,10 +117,10 @@ export default {
           response => {
             //console.log(response)
             this.storage.trans = response.body;
-            this.trans = this.storage.trans.g;
+            this.gtrans = this.storage.trans.g;
             this.lang = this.storage.lang;
 
-            this.popoverDataContent = this.trans[99];
+            this.popoverDataContent = this.gtrans[99];
 
             bus.$emit("updateLang");
           },

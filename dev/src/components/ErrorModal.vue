@@ -4,13 +4,13 @@
      <b-modal :no-close-on-backdrop="true" :no-close-on-esc="true" :cancel-disabled="true"
                ref="myModalRef" hide-footer title="Ooops !">
       <div class="d-block text-center">
-        <h4> <i class="fa fa-exclamation-triangle"></i> {{trans[175]}}<!--  this organization is not referenced -->.
+        <h4> <i class="fa fa-exclamation-triangle"></i> {{gtrans[175]}}<!--  this organization is not referenced -->.
         </h4>
-        <p>{{trans[176]}}<!--  We apologize for any inconvenience this has caused -->.</p>
+        <p>{{ctrans.apologize}}<!--  We apologize for any inconvenience this has caused -->.</p>
       </div>
 
       <b-btn class="mt-3" variant="outline-primary" block
-       :href="'#/?lang=' + storage.lang">{{trans[177]}} <!--Retour Accueil-->{{id}}</b-btn>
+       :href="'#/?lang=' + storage.lang">{{ctrans.backHome}}</b-btn>
 
     </b-modal>
 
@@ -27,17 +27,20 @@ export default {
 
   data() {
     return {
-      trans: []
+      gtrans: [],
+      ctrans: {},
     };
   },
   mounted() {
 
     if (this.storage.trans != null) {
-        this.trans = this.storage.trans.g
+        this.gtrans = this.storage.trans.g
+        this.ctrans = this.storage.trans.common
     }
 
     bus.$on("updateLang", section => {
-      this.trans = this.storage.trans.g
+      this.gtrans = this.storage.trans.g
+      this.ctrans = this.storage.trans.common
     });
   },
   methods: {
@@ -47,7 +50,7 @@ export default {
     },
     /** */
     notifyError: function(txt) {
-      console.log(this.storage.url + "&method=deadPage&context=modal&" + txt)
+      //console.log(this.storage.url + "&method=deadPage&context=modal&" + txt)
       this.$http.get(this.storage.url + "&method=deadPage&context=modal&" + txt).then(
         response => {
            //console.log("error notify");

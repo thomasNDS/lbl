@@ -3,32 +3,34 @@
 
     <div class="lbl-page-header" style="">
         <div class="container text-center" style="padding:1em;">
-          <h1 class="display-3">{{trans[25]}} <!-- Legal --></h1>
+          <h1 class="display-3">{{ctrans.legalStatus}}</h1>
         </div><!-- End container -->
     </div><!-- End jumbotron -->
 
     <div class="container">
 
       <h2>
-        {{trans[46]}} <!-- Hébergeur -->
+        {{gtrans[46]}} <!-- Hébergeur -->
       </h2>
       <p>
         
-        {{trans[47]}} <!-- website -->
-          <a href="https://cloud.google.com">Google Cloud platform</a>
-          {{trans[48]}} <!-- google address -->
+        {{gtrans[47]}} <!-- website -->
+          <a href="https://cloud.google.com">Google Cloud platform</a>.<br/>
+          {{gtrans[48]}} <!-- google address -->
           Gordon House, Barrow Street, Dublin 4,Ireland.
           
       </p>
       <br/>
       <h2>
-        {{trans[51]}} <!--  Données personnelles -->
+        {{gtrans[51]}} <!--  Données personnelles -->
       </h2>
       <p>
-        {{trans[52]}}. <!-- collecte data -->
+        {{gtrans[52]}}. <!-- collecte data -->
       </p>
 
-      <div>Some icons made from <a href="http://www.onlinewebfonts.com/icon">Icon Fonts</a> is licensed by CC BY 3.0</div>
+      <div>{{ltrans.someIcons}}<a href="http://www.onlinewebfonts.com/icon">Icon Fonts</a> {{ltrans.licensed}} 
+      <a :href="'https://creativecommons.org/licenses/by/3.0' + ltrans.extCcWeb">CC BY 3.0</a></div>
+
       <!--https://www.onlinewebfonts.com/icon/561835-->
       <!--https://www.onlinewebfonts.com/icon/419836-->
       <!--https://www.onlinewebfonts.com/icon/365143-->
@@ -47,13 +49,13 @@
             <div class="card-body">
               <h5 class="card-title">
                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                {{trans[49]}} <!-- See disclaimer -->
+                {{gtrans[49]}} <!-- See disclaimer -->
               </h5>
               <p class="card-text">
                 <p>
-                   {{trans[50]}} <!-- Origin of data -->
+                   {{gtrans[50]}} <!-- Origin of data -->
                 </p>
-                <a href="#/Disclaimer" class="btn btn-primary"> Details</a>
+                <a :href="'#/Disclaimer?lang=' + storage.lang" class="btn btn-primary"> Details</a>
 
             </div>
             <!-- End card-body -->
@@ -80,12 +82,16 @@ export default {
 
   data() {
     return {
-        trans: this.storage.trans && this.storage.trans.g || []
+        gtrans: this.storage.trans && this.storage.trans.g || [],
+        ctrans: this.storage.trans && this.storage.trans.common || {},
+        ltrans: this.storage.trans && this.storage.trans.legal || {}
     }
   },
   created() {
     bus.$on('updateLang', section => {
-      this.trans = this.storage.trans.g
+      this.gtrans = this.storage.trans.g
+      this.ctrans = this.storage.trans.common
+      this.ltrans = this.storage.trans.legal
     });
   },
   computed: {

@@ -11,19 +11,19 @@
 
     <div class="container">
 
-      <h2>  {{trans[107]}} <!-- Origines des données --></h2>
-      <p> {{trans[103]}} <!-- Les données de Lobbyland proviennent ... -->
+      <h2>  {{gtrans[107]}} <!-- Origines des données --></h2>
+      <p> {{gtrans[103]}} <!-- Les données de Lobbyland proviennent ... -->
        </p>
-      <p>{{trans[104]}} <!--  Le site contient des lien ... --></p>
+      <p>{{gtrans[104]}} <!--  Le site contient des lien ... --></p>
 
       <br/>
-      <h2>{{trans[108]}} <!--  Réutilisation --></h2>
+      <h2>{{gtrans[108]}} <!--  Réutilisation --></h2>
       <p class="text-center">
         <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" 
             src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
-        <p/> {{trans[105]}} <!--  Le contenu de ce site est sous licence -->
+        <p/> {{gtrans[105]}} <!--  Le contenu de ce site est sous licence -->
         <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. 
-        {{trans[106]}}. <!-- Vous pouvez réutilisez l'intégralité -->
+        {{gtrans[106]}}. <!-- Vous pouvez réutilisez l'intégralité -->
         
     </div>
 
@@ -39,16 +39,16 @@ export default {
 
   data() {
     return {
-      trans: this.storage.trans && this.storage.trans.g || []
+      gtrans: this.storage.trans && this.storage.trans.g || []
     }
   },
   created() {
     bus.$on('updateLang', section => {
-      this.trans = this.storage.trans.g
+      this.gtrans = this.storage.trans.g
     });
   },
   computed: {
-       getDescription: function() { return "Lobbyland - Disclaimer of the website : " + this.trans[103]},
+       getDescription: function() { return "Lobbyland - Disclaimer of the website : " + this.gtrans[103]},
   },
   metaInfo () {
     return {

@@ -173,7 +173,7 @@ export default {
   data() {
     return {
       gtrans: this.storage.trans && this.storage.trans.g || [],
-      ltrans: this.storage.trans && this.storage.trans.home || []
+      ltrans: this.storage.trans && this.storage.trans.home || {}
 
     }
   },
@@ -190,16 +190,16 @@ export default {
 
   computed: {
        getDescription: function() {
-         return this.ltrans[0]
+         return this.ltrans.descr
        }
   },
   metaInfo () {
     return {
-      title : "Lobbyland - " + this.ltrans[1],
+      title : "Lobbyland - " + this.ltrans.short,
       meta: [
               { name: "Lobbyland", content: "Lobbyland" },
               { name: "description", content: this.getDescription, id: "desc" },
-              { name: "keywords", content: this.ltrans[2]},
+              { name: "keywords", content: this.ltrans.keywords},
               // Twitter
               { name: "twitter:title", content: this.getDescription},
               // with shorthand

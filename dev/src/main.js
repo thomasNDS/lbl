@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 
 import Home from './pages/Home.vue'
+import Contact from './pages/Contact.vue'
 import Legal from './pages/Legal.vue'
 import Disclaimer from './pages/Disclaimer.vue'
 import Orga from './pages/Orga.vue'
@@ -9,7 +10,6 @@ import Countries from './pages/Countries.vue'
 import Country from './pages/Country.vue'
 import Interet from './pages/Interet.vue'
 import Interets from './pages/Interets.vue'
-import FAQ from './pages/FAQ.vue'
 import p404 from './pages/404.vue'
 
 import Styles from './styles/main.scss'
@@ -86,8 +86,8 @@ const routes = [
   { path: '/activities', component: Interets , props: param},
   { path: '/disclaimer', component: Disclaimer , props: param},
   { path: '/legal', component: Legal , props: param},
-  { path: '/FAQ', component: FAQ , props: param},
   { path: '/404', component: p404 , props: param},
+  { path: '/contact', component: Contact , props: param}
 ]
 
 const router = new VueRouter({

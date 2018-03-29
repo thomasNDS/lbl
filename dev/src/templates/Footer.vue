@@ -5,15 +5,22 @@
       <a v-bind:href="'#/Disclaimer?lang=' + storage.lang" class="footer-link">
         <i class="fa fa-bullhorn icon-start" aria-hidden="true"></i>
         <span class="text-muted">
-         {{trans[26]}} <!-- Disclaimer -->
+         Disclaimer
         </span>
       </a>
       <a v-bind:href="'#/Legal?lang=' + storage.lang" class="footer-link">
         <i class="fa fa-gavel icon-start" aria-hidden="true"></i>
         <span class="text-muted">
-          {{trans[25]}} <!-- About -->
+          {{ctrans.legalStatus}}
         </span>
       </a>
+      <a v-bind:href="'#/contact?lang=' + storage.lang" class="footer-link">
+        <i class="far fa-envelope icon-start" aria-hidden="true"></i>
+        <span class="text-muted">
+          Contact
+        </span>
+      </a>
+      
       <div>
         <a href="https://twitter.com/share?url=https%3A//lobbyland.eu&related=Lobbyland%2CEU
                  &hashtags=lobbyland%2CEU
@@ -44,12 +51,12 @@ export default {
   props: ['storage'],
   data() {
     return {
-      trans: []
+      ctrans: {}
     }
   },
   created() {
      bus.$on('updateLang', section => {
-        this.trans = this.storage.trans.g
+        this.ctrans = this.storage.trans.common
       });
   },
   methods: {

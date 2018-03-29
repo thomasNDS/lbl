@@ -1,6 +1,2 @@
 import Vue from 'vue'
-export default new Vue ({
-    // data
-    // methods
-    // watch
-})
+export default new Vue ({ })

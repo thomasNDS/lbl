@@ -13,10 +13,10 @@
 <br/>
     <img :src="storage.ctxDist + '/static/broken.png'" style="width: 100px;"/>
     <br/><br/>
-    <h3>{{trans[119]}}. <!-- This page doesn't exist anymore --> </h3>
+    <h3>{{gtrans[119]}}. <!-- This page doesn't exist anymore --> </h3>
 
     <br/>
-    <b-button :href="'#/?lang=' + this.storage.lang"> {{trans[120]}} </b-button>
+    <b-button :href="'#/?lang=' + this.storage.lang"> {{gtrans[120]}} </b-button>
      
     </div>
 
@@ -33,12 +33,12 @@ export default {
 
   data() {
     return {
-      trans: this.storage.trans && this.storage.trans.g || []
+      gtrans: this.storage.trans && this.storage.trans.g || []
     }
   },
   created() {
     bus.$on('updateLang', section => {
-      this.trans = this.storage.trans.g
+      this.gtrans = this.storage.trans.g
     });
   },
 

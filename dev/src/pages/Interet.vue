@@ -5,7 +5,7 @@
        <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
         <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
           <a v-bind:href="'#/?lang=' + storage.lang" itemscope itemtype="http://schema.org/Thing" itemprop="item">
-            <span itemprop="name">{{gtrans[53]}} <!--  Accueil --></span>
+            <span itemprop="name">{{ctrans.home}}</span>
           </a><meta itemprop="position" content="1" />
         </li>
         <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
@@ -241,8 +241,8 @@ export default {
   data() {
     return {
       gtrans: this.storage.trans && this.storage.trans.g || [],
-      ltrans: this.storage.trans && this.storage.trans.interet || [],
-      ctrans: this.storage.trans && this.storage.trans.common || [],
+      ltrans: this.storage.trans && this.storage.trans.interet || {},
+      ctrans: this.storage.trans && this.storage.trans.common || {},
       interet: [],
       interets: [],
       viewCountry : 0, // 0 : nb, 1 : cash
